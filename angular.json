@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "CobitReturn"
+  "defaultProject": "CobitReturn",
+  "cli": {
+    "analytics": "22a464d4-63a1-4728-912b-903c9b8d4ccc"
+  }
 }
