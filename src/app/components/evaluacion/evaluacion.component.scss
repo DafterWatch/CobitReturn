@@ -1,0 +1,298 @@
+body{
+    background-color: aliceblue;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+.container{
+    padding-top: 0%;
+    padding-left: 5%;
+}
+
+.cards{
+    padding: 10px;
+
+}
+
+
+
+.notification{
+    font-size: 20px;
+    padding: 20px;
+    background-color: #8479E1;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card{
+    padding: 3%;
+    border: solid 0.4em;
+    width: 350px;
+    margin-top: 10px;
+    background-color: aliceblue;
+}
+
+.card a::before {
+    content: ’’;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #b47dcd, #e878a2, #eb85ab);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .card a:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card[data-animation="to-left"] a::before {
+    transform-origin: right;
+  }
+   
+  .card[data-animation="center"] a::before {
+    transform-origin: center;
+  }
+
+    .efectividad{border-left-color: rgb(252, 76, 32);}
+    .eficiencia{border-left-color: rgb(255, 222, 34);}
+    .confidencialidad{border-left-color: rgb(88, 216, 77);}
+    .integridad{border-left-color: rgb(160, 77, 216);}
+    .disponibilidad{border-left-color: rgb(77, 98, 216);}
+    .cumplimiento{border-left-color: rgb(223, 37, 213);}
+    .confiabilidad{border-left-color: rgb(49, 252, 235);}
+
+.title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.subtitle{
+    padding: 10px;
+    padding-left: 20px;
+    background-color: #733C3C; 
+    color: white;
+    -webkit-border-radius: 30px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius: 30px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-radius: 30px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+:root {
+    --body-bg-color: #1a1c1d;
+    --text-color: #aaaebc;
+    --hr-color: #26292a;
+    --red: #e74c3c;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  
+  hr {
+    border-color: var(--hr-color);
+    margin: 20px 0;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu li {
+    margin-right: 70px;
+  }
+  
+  .menu a {
+    position: relative;
+    display: block;
+    padding: 5px;
+  }
+  
+  .menu a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #733C3C, #733C3C, #733C3C);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .menu a:hover::before {
+    transform: scaleX(1);
+  }
+  
+  
+  /* ANIMATIONS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .menu[data-animation="to-left"] a::before {
+    transform-origin: right;
+  }
+  
+  .menu[data-animation="center"] a::before {
+    transform-origin: center;
+  }
+  
+  .menu[data-animation="bonus"] a::before {
+    transform-origin: right;
+  }
+  
+  .menu[data-animation="bonus"] a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.82, 0.94);
+  }
+
+
+  //RESULTADOS
+
+  :root {
+    --body-bg-color: #1a1c1d;
+    --text-color: #aaaebc;
+    --hr-color: #26292a;
+    --transition-duration: 0.3s;
+    --transition-delay: 0.2s;
+    --red: #e74c3c;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  body {
+    margin: 30px 0;
+    font: 22px sans-serif;
+    background: var(--body-bg-color);
+    color: var(--text-color);
+  }
+  
+  hr {
+    border-color: var(--hr-color);
+    margin: 20px 0;
+  }
+  
+  .menus {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menus li {
+    margin-right: 70px;
+  }
+  
+  .menus a {
+    position: relative;
+    display: block;
+    padding: 10px;
+  }
+  
+  .menus .border {
+    position: absolute;
+    left: 0;
+    background: currentColor;
+    transition: transform var(--transition-duration) ease-in-out;
+  }
+  
+  .menus .border-top,
+  .menus .border-bottom {
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+  }
+  
+  .menus .border-left,
+  .menus .border-right {
+    width: 1px;
+    height: 100%;
+    transform: scaleY(0);
+  }
+  
+  .menus .border-top,
+  .menus .border-left,
+  .menus .border-right {
+    top: 0;
+  }
+  
+  .menus .border-bottom {
+    bottom: 0;
+    transform-origin: bottom right;
+  }
+  
+  .menus .border-top {
+    transform-origin: top left;
+  }
+  
+  .menus .border-left {
+    transform-origin: bottom left;
+  }
+  
+  .menus .border-right {
+    left: auto;
+    right: 0;
+    transform-origin: top right;
+  }
+  
+  .menus a:hover .border-top,
+  .menus a:hover .border-bottom {
+    transform: scaleX(1);
+  }
+  
+  .menus a:hover .border-left,
+  .menus a:hover .border-right {
+    transform: scaleY(1);
+  }
+  
+  .menus a:hover .border-right {
+    transition-delay: var(--transition-delay);
+  }
+  
+  .menus a:hover .border-bottom {
+    transition-delay: calc(var(--transition-delay) * 2);
+  }
+  
+  .menus a:hover .border-left {
+    transition-delay: calc(var(--transition-delay) * 3);
+  }
+  
+  
+  /* ANIMATIONS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .menus[data-animation="diagonal"] .border-left {
+    transform-origin: top left;
+  }
+  
+  .menus[data-animation="diagonal"] .border-right,
+  .menus[data-animation="diagonal"] .border-bottom {
+    transform-origin: bottom right;
+  }
+  
+  .menus[data-animation="diagonal"] a:hover [class^=border]{
+    transition-delay: 0s;
+  }
+  

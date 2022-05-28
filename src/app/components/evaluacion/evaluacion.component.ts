@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EvaluacionComponent implements OnInit {
 
+
+  
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  
+
 }
+
