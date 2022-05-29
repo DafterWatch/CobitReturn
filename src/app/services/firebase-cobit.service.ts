@@ -11,4 +11,7 @@ export class FirebaseCobitService {
   getDominios(): Observable<any>{
     return this.firestore.collection('Dominios', ref => ref.orderBy('id_dominios', 'asc')).snapshotChanges();
   }
+  getProcesos(): Observable<any>{
+    return this.firestore.collection('Procesos', ref => ref.orderBy('id_dominios', 'asc')).snapshotChanges();
+  }
 }

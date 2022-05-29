@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { log } from 'console';
+import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 
 @Component({
   selector: 'app-procesos',
@@ -6,49 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./procesos.component.scss']
 })
 export class ProcesosComponent implements OnInit {
-
-  procesos: any[] = []
-
-  constructor() { 
-    this.getProcesos()
-  }
-
+  constructor(private router:Router, private _firebaseCobit:FirebaseCobitService) { }
+  procesos: any[] = [];
+  procesosLista: any[] = [];
   ngOnInit(): void {
+    this.getProcesosFunction();
   }
-
-  getProcesos(){
-    this.procesos.push(
-      {
-        id: "proceso1",
-        name: "PO1",
-        title: "Definir un Plan Estratégico de TI",
-        description: "El objetivo es lograr un balance óptimo entre las oportunidades de tecnologia de información y los requierimientos de TI de negocio, para asegurar sus logros futuros."
-      },
-      {
-        id: "proceso1",
-        name: "PO1",
-        title: "Definir un Plan Estratégico de TI",
-        description: "El objetivo es lograr un balance óptimo entre las oportunidades de tecnologia de información y los requierimientos de TI de negocio, para asegurar sus logros futuros."
-      },
-      {
-        id: "proceso1",
-        name: "PO1",
-        title: "Definir un Plan Estratégico de TI",
-        description: "El objetivo es lograr un balance óptimo entre las oportunidades de tecnologia de información y los requierimientos de TI de negocio, para asegurar sus logros futuros."
-      },
-      {
-        id: "proceso1",
-        name: "PO1",
-        title: "Definir un Plan Estratégico de TI",
-        description: "El objetivo es lograr un balance óptimo entre las oportunidades de tecnologia de información y los requierimientos de TI de negocio, para asegurar sus logros futuros."
-      },
-      {
-        id: "proceso1",
-        name: "PO1",
-        title: "Definir un Plan Estratégico de TI",
-        description: "El objetivo es lograr un balance óptimo entre las oportunidades de tecnologia de información y los requierimientos de TI de negocio, para asegurar sus logros futuros."
-      }
-    )
+  getProcesosFunction(){
+    this._firebaseCobit.getProcesos().subscribe(data => {
+      this.procesos = [];
+      data.forEach((element:any) => {
+        this.procesos.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data()
+        })
+      });
+      //console.log(this.procesos);
+     //console.log(this.procesos[0].procesos)
+      this.procesosLista = this.procesos[0].procesos["PO1"];
+      //console.log(this.procesosLista)
+    })
   }
-
+  log(a:any){
+    console.log(a)
+  }
 }
