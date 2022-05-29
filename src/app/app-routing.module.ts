@@ -7,17 +7,17 @@ import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.co
 import { ProcesosComponent } from './components/procesos/procesos.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'pagprincipal', component: PagprincipalComponent },
   { path: 'dominios', component: DominiosComponent },
   { path: 'procesos', component: ProcesosComponent },
   { path: 'evaluacion', component: EvaluacionComponent },
-  { path: '**', redirectTo: 'login', pathMatch: 'full'},
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
