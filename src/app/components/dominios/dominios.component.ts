@@ -5,10 +5,9 @@ import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 @Component({
   selector: 'app-dominios',
   templateUrl: './dominios.component.html',
-  styleUrls: ['./dominios.component.scss']
+  styleUrls: ['./dominios.component.scss'],
 })
 export class DominiosComponent implements OnInit {
-
   constructor(private router:Router, private _firebaseCobit:FirebaseCobitService) { }
   dominios: any[] = [];
   ngOnInit(): void {

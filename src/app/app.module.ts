@@ -14,12 +14,12 @@ import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.co
 import { DominiosComponent } from './components/dominios/dominios.component';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDWrLDx28-SG-4XOx9L_kTQVQyd4WoDjTo",
-  authDomain: "cobitpocketedition.firebaseapp.com",
-  projectId: "cobitpocketedition",
-  storageBucket: "cobitpocketedition.appspot.com",
-  messagingSenderId: "20202039173",
-  appId: "1:20202039173:web:83a308464c699dee5ec6ec"
+  apiKey: 'AIzaSyDWrLDx28-SG-4XOx9L_kTQVQyd4WoDjTo',
+  authDomain: 'cobitpocketedition.firebaseapp.com',
+  projectId: 'cobitpocketedition',
+  storageBucket: 'cobitpocketedition.appspot.com',
+  messagingSenderId: '20202039173',
+  appId: '1:20202039173:web:83a308464c699dee5ec6ec',
 };
 
 @NgModule({
@@ -30,16 +30,16 @@ const firebaseConfig = {
     ProcesosComponent,
     EvaluacionComponent,
     PagprincipalComponent,
-    DominiosComponent
+    DominiosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig) ,
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

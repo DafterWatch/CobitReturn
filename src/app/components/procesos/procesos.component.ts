@@ -6,7 +6,7 @@ import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 @Component({
   selector: 'app-procesos',
   templateUrl: './procesos.component.html',
-  styleUrls: ['./procesos.component.scss']
+  styleUrls: ['./procesos.component.scss'],
 })
 export class ProcesosComponent implements OnInit {
   constructor(private router:Router, private _firebaseCobit:FirebaseCobitService) { }

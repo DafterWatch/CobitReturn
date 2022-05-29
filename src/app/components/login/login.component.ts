@@ -5,25 +5,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   usuarios: any[] = [];
   usuariosAdmin: any[] = [];
   loginUsuario: FormGroup;
   submitted = false;
   validLogin = false;
-  constructor(private fb: FormBuilder, private router:Router){
+  constructor(private fb: FormBuilder, private router: Router) {
     this.loginUsuario = this.fb.group({
-      email:['', Validators.required],
-      pass:['', Validators.required]
-    })
+      email: ['', Validators.required],
+      pass: ['', Validators.required],
+    });
     this.validLogin = true;
   }
-  ngOnInit(): void {
-  }
-  iniciarSesion(email: string, pass: string){
+  ngOnInit(): void {}
+  iniciarSesion(email: string, pass: string) {
     /*this.submitted = true;
     if(this.loginUsuario.invalid){
       return;
