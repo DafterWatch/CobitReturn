@@ -1,15 +1,33 @@
 <div class="container mt-3 mb-3">
-    <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1;">Cerrar Sesion</button>
-    <span class="h1">DOMINIOS</span>
-    <br>
+  <button
+    class="btn btn-lg btn-primary m-2 float-end"
+    routerLink="/login"
+    style="background-color: #003ca1"
+  >
+    Cerrar Sesion
+  </button>
+  <span class="h1">DOMINIOS</span>
+  <br />
 </div>
 <div class="list-group" *ngFor="let dominio of dominios">
-    <label class="list-group-item" style="width:600px">
-        <input class="form-check-input me-1" type="checkbox" value="">
-        {{dominio.titulo}} - {{dominio.acronimo}}<br>
-        {{dominio.descripcion}}
-      </label>
+  <label class="list-group-item" style="width: 600px">
+    <input class="form-check-input me-1" type="checkbox" value="" />
+    {{ dominio.titulo }} - {{ dominio.acronimo }}<br />
+    {{ dominio.descripcion }}
+  </label>
 </div>
-<br>
-<button class="btn btn-lg btn-primary m-2 float-start" routerLink="/pagprincipal" style="background-color: #003ca1;">Volver Pagina Principal</button>
-<button class="btn btn-lg btn-primary m-2 float-end" routerLink="/procesos" style="background-color: #003ca1;">Siguiente</button>
+<br />
+<button
+  class="btn btn-lg btn-primary m-2 float-start"
+  routerLink="/pagprincipal"
+  style="background-color: #003ca1"
+>
+  Volver Pagina Principal
+</button>
+<button
+  class="btn btn-lg btn-primary m-2 float-end"
+  routerLink="/procesos"
+  style="background-color: #003ca1"
+>
+  Siguiente
+</button>
