@@ -1,0 +1,74 @@
+<body>
+    <h1>REPORTE</h1>
+
+    <h3>Fecha: {{fecha_actual}}</h3>
+
+    <h3>Catalizadores que se obtuvieron en el reporte.</h3>
+    <br>
+    <table class="table">
+        <thead class="table-dark">
+            <th scope="col">#</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Dominio</th>
+            <th scope="col">Proceso</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Ejemplo de un catalizador</td>
+                <td>Planear y organizar (PO)</td>
+                <td>PO4</td>
+              </tr>
+        </tbody>
+      </table>
+
+    <h3>Criterios calculados:</h3>
+    <div class="criterios">
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">CRITERIOS Y REQUERIMIENTOS</li>
+            <li class="list-group-item">CANTIDAD</li>
+          </ul>
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">Efectividad</li>
+            <li class="list-group-item">{{n_efectividad}}</li>
+          </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Eficiencia</li>
+            <li class="list-group-item">{{n_eficiencia}}</li>
+          </ul>
+          <ul class="list-group list-group-horizontal-md">
+            <li class="list-group-item">Confidencialidad</li>
+            <li class="list-group-item">{{n_confidencialidad}}</li>
+          </ul>
+          <ul class="list-group list-group-horizontal-lg">
+            <li class="list-group-item">Integridad</li>
+            <li class="list-group-item">{{n_integridad}}</li>
+          </ul>
+          <ul class="list-group list-group-horizontal-xl">
+            <li class="list-group-item">Disponibilidad</li>
+            <li class="list-group-item">{{n_disponibilidad}}</li>
+          </ul>
+          <ul class="list-group list-group-horizontal-xxl">
+            <li class="list-group-item">Cumplimiento</li>
+            <li class="list-group-item">{{n_cumplimiento}}</li>
+          </ul>
+          <ul class="list-group list-group-horizontal-xxl">
+            <li class="list-group-item">Confiabilidad</li>
+            <li class="list-group-item">{{n_confiabilidad}}</li>
+          </ul>
+    </div>
+
+    <br><br>
+
+    <h3>RECURSOS DE TI</h3>
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item">Aplicaciones</li>
+        <li class="list-group-item">Información</li>
+        <li class="list-group-item">Instalaciones</li>
+        <li class="list-group-item">Tecnologia</li>
+        <li class="list-group-item">Personal</li>
+      </ol>
+
+
+    <button type="button" (click)='createPdf()')>Descargar Reporte (.PDF)</button>
+</body>

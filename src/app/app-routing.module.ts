@@ -5,6 +5,7 @@ import { EvaluacionComponent } from './components/evaluacion/evaluacion.componen
 import { LoginComponent } from './components/login/login.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { ProcesosComponent } from './components/procesos/procesos.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'dominios', component: DominiosComponent },
   { path: 'procesos', component: ProcesosComponent },
   { path: 'evaluacion', component: EvaluacionComponent },
+  { path: 'reporte', component: ReporteComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

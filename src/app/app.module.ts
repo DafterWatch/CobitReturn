@@ -12,6 +12,9 @@ import { ProcesosComponent } from './components/procesos/procesos.component';
 import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { DominiosComponent } from './components/dominios/dominios.component';
+import { PdfComponent } from './components/reporte/pdf/pdf.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDWrLDx28-SG-4XOx9L_kTQVQyd4WoDjTo',
@@ -31,6 +34,8 @@ const firebaseConfig = {
     EvaluacionComponent,
     PagprincipalComponent,
     DominiosComponent,
+    PdfComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,
