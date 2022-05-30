@@ -9,28 +9,17 @@
     </button>
     <span class="h1">BIENVENIDO</span>
     <br />
+    <span class="h1">AREAS PARA AUDITORIA</span>
+    <br />
   </div>
-  <div class="list-group">
+  <div class="list-group" *ngFor="let area of areas">
     <button
       type="button"
       class="list-group-item list-group-item-action"
       routerLink="/dominios"
+      (click)="seleccionArea(area.id_area)"
     >
-      Area 1
-    </button>
-    <button
-      type="button"
-      class="list-group-item list-group-item-action"
-      routerLink="/dominios"
-    >
-      Area 2
-    </button>
-    <button
-      type="button"
-      class="list-group-item list-group-item-action"
-      routerLink="/dominios"
-    >
-      Area 3
+      {{ area.nombre }}
     </button>
   </div>
 </div>

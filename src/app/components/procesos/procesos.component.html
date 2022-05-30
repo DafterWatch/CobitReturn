@@ -17,11 +17,9 @@
         class="card border-dark mb-3"
         style="max-width: 25rem; height: 350px; max-height: 400px"
       >
-        <div class="card-header">{{ proceso.acronimo }}</div>
-        <div class="card-body text-dark">
-          <h5 class="card-title">{{ proceso.titulo }}</h5>
-          <p class="card-text">{{ proceso.descripcion }}</p>
-          <div class="form-check">
+        <div class="card-header">
+          <span class="float-start">{{ proceso.acronimo }}</span>
+          <div class="form-check float-end">
             <input
               class="form-check-input me-1"
               type="checkbox"
@@ -32,6 +30,10 @@
               AGREGAR
             </label>
           </div>
+        </div>
+        <div class="card-body text-dark">
+          <h5 class="card-title">{{ proceso.titulo }}</h5>
+          <p class="card-text">{{ proceso.descripcion }}</p>
         </div>
       </div>
       <br />

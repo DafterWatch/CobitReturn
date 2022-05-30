@@ -11,7 +11,12 @@
 </div>
 <div class="list-group" *ngFor="let dominio of dominios">
   <label class="list-group-item" style="width: 600px">
-    <input class="form-check-input me-1" type="checkbox" value="" />
+    <input
+      class="form-check-input me-1"
+      type="checkbox"
+      value=""
+      (change)="fieldsChange($event, dominio.id_dominios)"
+    />
     {{ dominio.titulo }} - {{ dominio.acronimo }}<br />
     {{ dominio.descripcion }}
   </label>
@@ -26,8 +31,8 @@
 </button>
 <button
   class="btn btn-lg btn-primary m-2 float-end"
-  routerLink="/procesos"
   style="background-color: #003ca1"
+  (click)="verificarSeleccion()"
 >
   Siguiente
 </button>

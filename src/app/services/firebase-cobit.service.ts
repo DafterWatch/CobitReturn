@@ -27,4 +27,9 @@ export class FirebaseCobitService {
       .collection('Usuarios', (ref) => ref.orderBy('id_usuario', 'desc'))
       .snapshotChanges();
   }
+  getAreas(): Observable<any> {
+    return this.firestore
+      .collection('Areas', (ref) => ref.orderBy('id_area', 'desc'))
+      .snapshotChanges();
+  }
 }
