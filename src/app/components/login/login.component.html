@@ -12,7 +12,7 @@
         >TODOS LOS CAMPOS SON OBLIGATORIOS</span
       >
       <span *ngIf="!validLogin" class="badge bg-danger"
-        >EL CORREO O LA CONTRASEÑA NO SON VALIDOS</span
+        >EL USUARIO O LA CONTRASEÑA NO SON VALIDOS</span
       >
       <form
         [formGroup]="loginUsuario"
@@ -21,16 +21,14 @@
         <!-- Email input -->
         <div class="form-outline mb-4">
           <input
-            type="email"
+            type="text"
             id="form3Example3"
             class="form-control form-control-lg"
-            placeholder="Ingrese un correo electronico valido"
+            placeholder="Ingrese un usuario valido"
             formControlName="email"
             #email
           />
-          <label class="form-label" for="form3Example3"
-            >Correo electronico</label
-          >
+          <label class="form-label" for="form3Example3">Usuario</label>
         </div>
         <!-- Password input -->
         <div class="form-outline mb-3">
@@ -52,7 +50,6 @@
             style="background-color: #003ca1"
             type="submit"
             class="btn btn-primary btn-lg"
-            routerLink="/pagprincipal"
           >
             Iniciar Sesion
           </button>
