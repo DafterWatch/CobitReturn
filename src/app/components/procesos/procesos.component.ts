@@ -40,4 +40,13 @@ export class ProcesosComponent implements OnInit {
       });
     });
   }
+  listaProcesos: any[] = [];
+  fieldsChange(event: any, ac: any) {
+    if (event.currentTarget.checked) {
+      this.listaProcesos.push(ac);
+    } else {
+      this.listaProcesos.splice(this.listaProcesos.indexOf(ac), 1);
+    }
+    console.log(this.listaProcesos);
+  }
 }
