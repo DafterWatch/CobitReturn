@@ -14,7 +14,12 @@ export class FirebaseCobitService {
   }
   getProcesos(): Observable<any> {
     return this.firestore
-      .collection('Procesos', (ref) => ref.orderBy('id_dominios', 'asc'))
+      .collection('Procesos', (ref) => ref.orderBy('id_proceso', 'asc'))
+      .snapshotChanges();
+  }
+  getRecursos(): Observable<any> {
+    return this.firestore
+      .collection('Recursos', (ref) => ref.orderBy('id_recurso', 'asc'))
       .snapshotChanges();
   }
   getUsuarios(): Observable<any> {

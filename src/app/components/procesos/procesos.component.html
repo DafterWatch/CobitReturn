@@ -12,15 +12,15 @@
   </div>
   <br />
   <div class="row">
-    <div class="col-lg-4" *ngFor="let proceso of procesosListaPO">
+    <div class="col-lg-4" *ngFor="let proceso of procesos">
       <div
-        class="card border-primary mb-3"
+        class="card border-dark mb-3"
         style="max-width: 25rem; height: 350px; max-height: 400px"
       >
-        <div class="card-header"></div>
-        <div class="card-body text-primary">
-          <h5 class="card-title">aasdsa</h5>
-          <p class="card-text">{{ imprimirLog("aaa") }}</p>
+        <div class="card-header">{{ proceso.acronimo }}</div>
+        <div class="card-body text-dark">
+          <h5 class="card-title">{{ proceso.titulo }}</h5>
+          <p class="card-text">{{ proceso.descripcion }}</p>
           <div class="form-check">
             <input
               class="form-check-input me-1"
@@ -36,57 +36,45 @@
       </div>
       <br />
     </div>
-    <div class="card-body">
-      <button
-        class="btn btn-lg btn-primary m-2 float-end"
-        routerLink="/login"
-        style="background-color: #003ca1"
-      >
-        Cerrar Sesion
-      </button>
-      <span class="h1">PROCESOS</span>
-      <br />
-    </div>
-    <br />
-    <div class="row">
-      <div class="col-lg-4" *ngFor="let proceso of procesos">
-        <div
-          class="card border-primary mb-3"
-          style="max-width: 25rem; height: 350px; max-height: 400px"
-        >
-          <div class="card-header">{{ proceso.name }}</div>
-          <div class="card-body text-primary">
-            <h5 class="card-title">{{ proceso.title }}</h5>
-            <p class="card-text">{{ proceso.description }}</p>
-            <div class="form-check">
-              <input
-                class="form-check-input me-1"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                AGREGAR
-              </label>
-            </div>
-          </div>
-        </div>
-        <br />
-      </div>
-    </div>
-    <button
-      class="btn btn-lg btn-primary m-2 float-start"
-      routerLink="/dominios"
-      style="background-color: #003ca1"
-    >
-      Volver Dominios
-    </button>
-    <button
-      class="btn btn-lg btn-primary m-2 float-end"
-      routerLink="/evaluacion"
-      style="background-color: #003ca1"
-    >
-      Siguiente
-    </button>
   </div>
+  <span class="h1">RECURSOS DE TI</span>
+  <table class="table table-striped table-hover" style="width: 500px">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Selección</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let recurso of recursos">
+      <tr>
+        <th scope="row">{{ recurso.id_recurso }}</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input center"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+          </div>
+        </td>
+        <td>{{ recurso.nombre }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button
+    class="btn btn-lg btn-primary m-2 float-start"
+    routerLink="/dominios"
+    style="background-color: #003ca1"
+  >
+    Volver Dominios
+  </button>
+  <button
+    class="btn btn-lg btn-primary m-2 float-end"
+    routerLink="/evaluacion"
+    style="background-color: #003ca1"
+  >
+    Siguiente
+  </button>
 </div>

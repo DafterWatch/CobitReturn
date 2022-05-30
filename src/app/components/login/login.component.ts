@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
           ...element.payload.doc.data(),
         });
       });
-      console.log(this.usuarios);
     });
   }
 }

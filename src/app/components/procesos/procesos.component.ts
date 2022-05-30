@@ -13,12 +13,10 @@ export class ProcesosComponent implements OnInit {
     private _firebaseCobit: FirebaseCobitService
   ) {}
   procesos: any[] = [];
-  procesosListaPO: any[] = [];
-  procesosListaAI: any[] = [];
-  procesosListaDS: any[] = [];
-  procesosListaME: any[] = [];
+  recursos: any[] = [];
   ngOnInit(): void {
     this.getProcesosFunction();
+    this.getRecursosFunction();
   }
   getProcesosFunction() {
     this._firebaseCobit.getProcesos().subscribe((data) => {
@@ -29,10 +27,17 @@ export class ProcesosComponent implements OnInit {
           ...element.payload.doc.data(),
         });
       });
-      console.log(this.procesos);
     });
   }
-  imprimirLog(event: any) {
-    console.log(event);
+  getRecursosFunction() {
+    this._firebaseCobit.getRecursos().subscribe((data) => {
+      this.recursos = [];
+      data.forEach((element: any) => {
+        this.recursos.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+        });
+      });
+    });
   }
 }
