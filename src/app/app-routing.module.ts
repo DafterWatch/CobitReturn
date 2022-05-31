@@ -1,3 +1,5 @@
+import { ReporteFinalComponent } from './components/reporte-final/reporte-final.component';
+import { RegistroComponent } from './components/registro/registro.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DominiosComponent } from './components/dominios/dominios.component';
@@ -5,7 +7,7 @@ import { EvaluacionComponent } from './components/evaluacion/evaluacion.componen
 import { LoginComponent } from './components/login/login.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { ProcesosComponent } from './components/procesos/procesos.component';
-import { ReporteComponent } from './components/reporte/reporte.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,7 +16,8 @@ const routes: Routes = [
   { path: 'dominios', component: DominiosComponent },
   { path: 'procesos', component: ProcesosComponent },
   { path: 'evaluacion', component: EvaluacionComponent },
-  { path: 'reporte', component: ReporteComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'reporte-final', component: ReporteFinalComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

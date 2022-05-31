@@ -12,8 +12,8 @@ import { ProcesosComponent } from './components/procesos/procesos.component';
 import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { DominiosComponent } from './components/dominios/dominios.component';
-import { PdfComponent } from './components/reporte/pdf/pdf.component';
-import { ReporteComponent } from './components/reporte/reporte.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { ReporteFinalComponent } from './components/reporte-final/reporte-final.component';
 
 
 const firebaseConfig = {
@@ -34,8 +34,8 @@ const firebaseConfig = {
     EvaluacionComponent,
     PagprincipalComponent,
     DominiosComponent,
-    PdfComponent,
-    ReporteComponent
+    RegistroComponent,
+    ReporteFinalComponent
   ],
   imports: [
     BrowserModule,

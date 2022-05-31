@@ -32,4 +32,7 @@ export class FirebaseCobitService {
       .collection('Areas', (ref) => ref.orderBy('id_area', 'desc'))
       .snapshotChanges();
   }
+  agregarUsuario(user: any): Promise<any>{
+    return this.firestore.collection('Usuarios').add(user);
+  }
 }
