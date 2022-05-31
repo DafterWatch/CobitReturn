@@ -32,7 +32,14 @@ export class FirebaseCobitService {
       .collection('Areas', (ref) => ref.orderBy('id_area', 'desc'))
       .snapshotChanges();
   }
-  agregarUsuario(user: any): Promise<any>{
+  agregarUsuario(user: any): Promise<any> {
     return this.firestore.collection('Usuarios').add(user);
+  }
+  getCatalizadores(): Observable<any> {
+    return this.firestore
+      .collection('Catalizadores', (ref) =>
+        ref.orderBy('id_catalizador', 'desc')
+      )
+      .snapshotChanges();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 
 @Component({
   selector: 'app-evaluacion',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./evaluacion.component.scss'],
 })
 export class EvaluacionComponent implements OnInit {
-  constructor() {}
+  constructor(private _firebaseCobit: FirebaseCobitService) {}
 
   listaDominios: any[] = [];
   listaProcesos: any[] = [];
   listaRecursos: any[] = [];
+  catalizadores: any[] = [];
+  listaCatalizadores: any[] = [];
   ngOnInit(): void {
     window.scroll(0, 0);
     let idUsuario = sessionStorage.getItem('id_usuario');
@@ -21,8 +24,35 @@ export class EvaluacionComponent implements OnInit {
     console.log(
       'ID Usuario: ' + idUsuario,
       'ID Area: ' + idArea,
+      'lista dominios',
       this.listaDominios,
-      this.listaProcesos
+      'lista procesos',
+      this.listaProcesos,
+      'lista recursos',
+      this.listaRecursos
     );
+    this.getCatalizadoresFunction();
+  }
+  getCatalizadoresFunction() {
+    this._firebaseCobit.getCatalizadores().subscribe((data) => {
+      this.catalizadores = [];
+      data.forEach((element: any) => {
+        let procesoX = '';
+        procesoX = element.payload.doc.data().proceso.toString();
+        if (this.listaProcesos.includes(procesoX)) {
+          this.catalizadores.push({
+            id: element.payload.doc.id,
+            ...element.payload.doc.data(),
+          });
+        }
+      });
+      /*data.forEach((element: any) => {
+        this.catalizadores.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+        });
+      });*/
+      this.catalizadores.sort();
+    });
   }
 }

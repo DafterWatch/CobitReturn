@@ -77,7 +77,7 @@ export class ProcesosComponent implements OnInit {
       sessionStorage.setItem('listaProcesos', cadena);
       //recursos
       cadena = '';
-      this.listaProcesos.forEach((element) => {
+      this.listaRecursos.forEach((element) => {
         cadena = cadena + element + ',';
       });
       cadena = cadena.substring(0, cadena.length - 1);

@@ -133,138 +133,18 @@
                     <th scope="col">Obtención</th>
                     <th scope="col">Documento</th>
                     <th scope="col">Proceso</th>
-                    <th scope="col">Dominio</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let catalizador of catalizadores; let i = index">
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{ i + 1 }}</th>
                     <td>
                         <div class="form-check">
                             <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
                         </div>
                     </td>
-                    <td>Manual para la administración de las inversiones de TI</td>
-                    <td>PO5</td>
-                    <td>PLANEAR Y ORGANIZAR (PO)</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>Politica sobre la administración de la calidad</td>
-                    <td>PO8</td>
-                    <td>PLANEAR Y ORGANIZAR (PO)</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>Politica sobre la identificación de soluciones automatizadas</td>
-                    <td>AI1</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>
-                        Proceso para la adquisicion y obtencion de software aplicativo
-                    </td>
-                    <td>AI2</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>Proceso para la adquisicion de recursos de TI</td>
-                    <td>AI5</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>
-                        Proceso para la adquisicion y obtencion de software aplicativo
-                    </td>
-                    <td>AI2</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>Proceso para la adquisicion de recursos de TI</td>
-                    <td>AI5</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>
-                        Proceso para la adquisicion y obtencion de software aplicativo
-                    </td>
-                    <td>AI2</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>Proceso para la adquisicion de recursos de TI</td>
-                    <td>AI5</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>
-                        Proceso para la adquisicion y obtencion de software aplicativo
-                    </td>
-                    <td>AI2</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
-                        </div>
-                    </td>
-                    <td>Proceso para la adquisicion de recursos de TI</td>
-                    <td>AI5</td>
-                    <td>ADQUIRIR E IMPLEMENTAR (AI)</td>
+                    <td>{{ catalizador.documento }}</td>
+                    <td>{{ catalizador.proceso }}</td>
                 </tr>
             </tbody>
         </table>
