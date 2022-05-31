@@ -3,15 +3,12 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-
 @Component({
-  selector: 'app-reporte',
-  templateUrl: './reporte.component.html',
-  styleUrls: ['./reporte.component.scss']
+  selector: 'app-reporte-final',
+  templateUrl: './reporte-final.component.html',
+  styleUrls: ['./reporte-final.component.scss']
 })
-
-
-export class ReporteComponent implements OnInit {
+export class ReporteFinalComponent implements OnInit {
 
   fecha_actual='10/10/10';
   n_efectividad=10;
@@ -22,11 +19,11 @@ export class ReporteComponent implements OnInit {
   n_cumplimiento=10;
   n_confiabilidad=10;
 
-
   constructor() { }
 
   ngOnInit(): void {
   }
+
   createPdf() {
     const pdfReporte: any = {
       content: [
@@ -108,4 +105,5 @@ export class ReporteComponent implements OnInit {
     const pdf =pdfMake.createPdf(pdfReporte);
     pdf.open()
   }
+
 }

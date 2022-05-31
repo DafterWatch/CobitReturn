@@ -1,0 +1,68 @@
+<body>
+    <div class="padre">
+        <div class="hijo_uno">
+            <br><br>
+            <h1>Registrate</h1>
+        </div>
+        <br>
+
+        <div class="hijo_uno color">
+            <form
+            [formGroup]="registerUsuario"
+            (ngSubmit)="crearUser(name.value, lastname.value, username.value)"
+          >
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Nombre</label>
+                <input
+                type="text"
+                id="form3Example3"
+                class="form-control form-control-lg"
+                placeholder="Ingrese su nombre"
+                formControlName="name"
+                #name
+              />
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+                <label class="form-label" for="form3Example4">Apellido</label>
+                <input
+                type="text"
+                id="form3Example3"
+                class="form-control form-control-lg"
+                placeholder="Ingrese su apellido"
+                formControlName="lastname"
+                #lastname
+              />
+            </div>
+
+            <div class="form-outline mb-3">
+                <label class="form-label" for="form3Example4">Usuario</label>
+                <input
+                type="text"
+                id="form3Example3"
+                class="form-control form-control-lg"
+                placeholder="Ingrese un nombre de usuario"
+                formControlName="username"
+                #username
+              />
+            </div>
+            <!--<div class="d-flex justify-content-between align-items-center">
+                <a href="#!" class="text-body" routerLink="/olvidocontra">¿Olvido su contraseña?</a>
+              </div>-->
+            <div class="text-center text-lg-start mt-4 pt-2 tamaño">
+              <button
+                style="width: 200px;color: wheat;"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Iniciar Sesion
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Prefiero iniciar sesión <a href="login"
+                    class="link-danger">Ir.</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    
+</body>
