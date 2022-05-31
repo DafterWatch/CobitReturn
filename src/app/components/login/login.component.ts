@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
         this.usuarios[i].usuario === email &&
         this.usuarios[i].contrasena === pass
       ) {
-        console.log(this.usuarios[i].id);
         this.validLogin = true;
         sessionStorage.setItem('id_usuario', this.usuarios[i].id);
         this.router.navigate(['/pagprincipal']);
@@ -56,6 +55,6 @@ export class LoginComponent implements OnInit {
           ...element.payload.doc.data(),
         });
       });
-    }); 
+    });
   }
 }

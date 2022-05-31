@@ -10,7 +10,51 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
   usuarios: any[] = [];
-  abecedario = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9",".","-","_","$","&","#","@"];
+  abecedario = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '.',
+    '-',
+    '_',
+    '$',
+    '&',
+    '#',
+    '@',
+  ];
   registerUsuario: FormGroup;
   submitted = false;
   contrasena;
@@ -27,8 +71,9 @@ export class RegistroComponent implements OnInit {
     });
     this.validRegister = true;
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUsuario();
+  }
   crearUser(name: string, lastname: string, username: string) {
     this.submitted = true;
     if (this.registerUsuario.invalid) {
@@ -38,9 +83,9 @@ export class RegistroComponent implements OnInit {
     console.log('Campos llenos');
     const usernew: any = {
       apellido: this.registerUsuario.value.lastname,
-      contraseña: this.generarContrasena(),
-      fecha_creacion:new Date(),
-      id_usuario:this.getLenghtUsuarios(),
+      contrasena: this.generarContrasena(),
+      fecha_creacion: new Date(),
+      id_usuario: this.cantidadUsuario,
       nombre: this.registerUsuario.value.name,
       usuario: this.registerUsuario.value.username,
     };
@@ -56,33 +101,37 @@ export class RegistroComponent implements OnInit {
       });
   }
 
-  generarContrasena(){
-    this.contrasena ='';
-    for(var i=0;i<5;i++){
-      this.contrasena+=this.abecedario[this.getRandomInt(this.abecedario.length)]
+  generarContrasena() {
+    this.contrasena = '';
+    for (var i = 0; i < 5; i++) {
+      this.contrasena +=
+        this.abecedario[this.getRandomInt(this.abecedario.length)];
     }
-    for(var i=0;i<5;i++){
-      this.contrasena+=this.getRandomInt(9)
+    for (var i = 0; i < 5; i++) {
+      this.contrasena += this.getRandomInt(9);
     }
     console.log(this.contrasena);
-    
+
     return this.contrasena;
   }
   getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
-  getLenghtUsuarios() {
+  cantidadUsuario = 0;
+  getUsuario() {
+    this.cantidadUsuario = 0;
     this._firebaseCobit.getUsuarios().subscribe((data) => {
       this.usuarios = [];
+      sessionStorage.setItem('cantUsuarios', data.length.toString());
       data.forEach((element: any) => {
+        this.cantidadUsuario = element.payload.doc.id;
         this.usuarios.push({
           id: element.payload.doc.id,
+          ...element.payload.doc.data(),
         });
       });
     });
-    console.log(this.usuarios.length);
-    
-
-    return this.usuarios.length;
+    this.cantidadUsuario = parseInt(sessionStorage.getItem('cantUsuarios'));
+    this.cantidadUsuario++;
   }
 }
