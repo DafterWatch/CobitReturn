@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss']
+  styleUrls: ['./registro.component.scss'],
 })
 export class RegistroComponent implements OnInit {
   usuarios: any[] = [];
@@ -15,8 +15,11 @@ export class RegistroComponent implements OnInit {
   submitted = false;
   contrasena;
   validRegister = false;
-  constructor(private fb: FormBuilder, private router: Router,
-    private _firebaseCobit: FirebaseCobitService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private _firebaseCobit: FirebaseCobitService
+  ) {
     this.registerUsuario = this.fb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -25,8 +28,7 @@ export class RegistroComponent implements OnInit {
     this.validRegister = true;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   crearUser(name: string, lastname: string, username: string) {
     this.submitted = true;
     if (this.registerUsuario.invalid) {
@@ -41,15 +43,17 @@ export class RegistroComponent implements OnInit {
       id_usuario:this.getLenghtUsuarios(),
       nombre: this.registerUsuario.value.name,
       usuario: this.registerUsuario.value.username,
-
-    }
-    this._firebaseCobit.agregarUsuario(usernew).then(() => {
-      console.log('Registrado');
-      alert("Registrado!");
-      this.router.navigate(['/login']);
-    }).catch(error => {
-      console.log(error);
-    })
+    };
+    this._firebaseCobit
+      .agregarUsuario(usernew)
+      .then(() => {
+        console.log('Registrado');
+        alert('Registrado!');
+        this.router.navigate(['/login']);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   generarContrasena(){

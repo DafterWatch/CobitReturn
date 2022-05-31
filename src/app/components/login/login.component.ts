@@ -33,27 +33,18 @@ export class LoginComponent implements OnInit {
     if (this.loginUsuario.invalid) {
       return;
     }
-    /*if (this.usuarios[0].usuario == email) {
-      if (this.usuarios[0].contrasena == pass) {
+    for (let i = 0; i < this.usuarios.length; i++) {
+      if (
+        this.usuarios[i].usuario === email &&
+        this.usuarios[i].contrasena === pass
+      ) {
+        console.log(this.usuarios[i].id);
         this.validLogin = true;
-        sessionStorage.setItem('idUsuario', this.usuarios[0].id_usuario);
+        sessionStorage.setItem('id_usuario', this.usuarios[i].id);
         this.router.navigate(['/pagprincipal']);
       } else {
         this.validLogin = false;
       }
-    } else {
-      this.validLogin = false;
-    }*/
-    if ('usuario1' == email) {
-      if ('admin123' == pass) {
-        this.validLogin = true;
-        sessionStorage.setItem('idUsuario', 'id1');
-        this.router.navigate(['/pagprincipal']);
-      } else {
-        this.validLogin = false;
-      }
-    } else {
-      this.validLogin = false;
     }
   }
   getUsuario() {
