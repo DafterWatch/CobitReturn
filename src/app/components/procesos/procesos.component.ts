@@ -14,7 +14,13 @@ export class ProcesosComponent implements OnInit {
   ) {}
   procesos: any[] = [];
   recursos: any[] = [];
+  listaProcesos: any[] = [];
+  dominios: any[] = [];
+  listaDominios: any[] = [];
   ngOnInit(): void {
+    window.scroll(0, 0);
+    let dominios = sessionStorage.getItem('listaDominios');
+    this.listaDominios = dominios.split(',');
     this.getProcesosFunction();
     this.getRecursosFunction();
   }
@@ -22,11 +28,16 @@ export class ProcesosComponent implements OnInit {
     this._firebaseCobit.getProcesos().subscribe((data) => {
       this.procesos = [];
       data.forEach((element: any) => {
-        this.procesos.push({
-          id: element.payload.doc.id,
-          ...element.payload.doc.data(),
-        });
+        let procesoArea = element.payload.doc.data().acronimo;
+        procesoArea = procesoArea.substring(0, 2);
+        if (this.listaDominios.includes(procesoArea)) {
+          this.procesos.push({
+            id: element.payload.doc.id,
+            ...element.payload.doc.data(),
+          });
+        }
       });
+      console.log(this.procesos);
     });
   }
   getRecursosFunction() {
@@ -40,13 +51,11 @@ export class ProcesosComponent implements OnInit {
       });
     });
   }
-  listaProcesos: any[] = [];
   fieldsChange(event: any, ac: any) {
     if (event.currentTarget.checked) {
       this.listaProcesos.push(ac);
     } else {
       this.listaProcesos.splice(this.listaProcesos.indexOf(ac), 1);
     }
-    console.log(this.listaProcesos);
   }
 }
