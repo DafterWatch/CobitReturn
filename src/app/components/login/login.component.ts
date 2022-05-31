@@ -54,6 +54,6 @@ export class LoginComponent implements OnInit {
           ...element.payload.doc.data(),
         });
       });
-    });
+    }); 
   }
 }

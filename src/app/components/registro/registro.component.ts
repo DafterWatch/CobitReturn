@@ -9,9 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
-
+  usuarios: any[] = [];
+  abecedario = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9",".","-","_","$","&","#","@"];
   registerUsuario: FormGroup;
   submitted = false;
+  contrasena;
   validRegister = false;
   constructor(private fb: FormBuilder, private router: Router,
     private _firebaseCobit: FirebaseCobitService) {
@@ -34,9 +36,9 @@ export class RegistroComponent implements OnInit {
     console.log('Campos llenos');
     const usernew: any = {
       apellido: this.registerUsuario.value.lastname,
-      contraseña: 'generar',
-      fecha_creacion:'obtener',
-      id_usuario:'obtener',
+      contraseña: this.generarContrasena(),
+      fecha_creacion:new Date(),
+      id_usuario:this.getLenghtUsuarios(),
       nombre: this.registerUsuario.value.name,
       usuario: this.registerUsuario.value.username,
 
@@ -49,5 +51,34 @@ export class RegistroComponent implements OnInit {
       console.log(error);
     })
   }
-  
+
+  generarContrasena(){
+    this.contrasena ='';
+    for(var i=0;i<5;i++){
+      this.contrasena+=this.abecedario[this.getRandomInt(this.abecedario.length)]
+    }
+    for(var i=0;i<5;i++){
+      this.contrasena+=this.getRandomInt(9)
+    }
+    console.log(this.contrasena);
+    
+    return this.contrasena;
+  }
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  getLenghtUsuarios() {
+    this._firebaseCobit.getUsuarios().subscribe((data) => {
+      this.usuarios = [];
+      data.forEach((element: any) => {
+        this.usuarios.push({
+          id: element.payload.doc.id,
+        });
+      });
+    });
+    console.log(this.usuarios.length);
+    
+
+    return this.usuarios.length;
+  }
 }
