@@ -13,6 +13,7 @@ export class DominiosComponent implements OnInit {
     private _firebaseCobit: FirebaseCobitService
   ) {}
   dominios: any[] = [];
+  listaDominios: any[] = [];
   ngOnInit(): void {
     this.getDominiosFunction();
   }
@@ -27,7 +28,6 @@ export class DominiosComponent implements OnInit {
       });
     });
   }
-  listaDominios: any[] = [];
   fieldsChange(event: any, ac: any) {
     if (event.currentTarget.checked) {
       this.listaDominios.push(ac);
@@ -37,6 +37,12 @@ export class DominiosComponent implements OnInit {
   }
   verificarSeleccion() {
     if (this.listaDominios.length > 0) {
+      let cadena = '';
+      this.listaDominios.forEach((element) => {
+        cadena = cadena + element + ',';
+      });
+      cadena = cadena.substring(0, cadena.length - 1);
+      sessionStorage.setItem('listaDominios', cadena);
       this.router.navigate(['/procesos']);
     } else {
       alert('Debe seleccionar al menos un dominio');

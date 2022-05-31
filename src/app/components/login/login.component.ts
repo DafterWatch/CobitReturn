@@ -33,10 +33,21 @@ export class LoginComponent implements OnInit {
     if (this.loginUsuario.invalid) {
       return;
     }
-    if (this.usuarios[0].usuario == email) {
+    /*if (this.usuarios[0].usuario == email) {
       if (this.usuarios[0].contrasena == pass) {
         this.validLogin = true;
         sessionStorage.setItem('idUsuario', this.usuarios[0].id_usuario);
+        this.router.navigate(['/pagprincipal']);
+      } else {
+        this.validLogin = false;
+      }
+    } else {
+      this.validLogin = false;
+    }*/
+    if ('usuario1' == email) {
+      if ('admin123' == pass) {
+        this.validLogin = true;
+        sessionStorage.setItem('idUsuario', 'id1');
         this.router.navigate(['/pagprincipal']);
       } else {
         this.validLogin = false;
