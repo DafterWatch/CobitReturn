@@ -37,7 +37,6 @@ export class ProcesosComponent implements OnInit {
           });
         }
       });
-      console.log(this.procesos);
     });
   }
   getRecursosFunction() {
