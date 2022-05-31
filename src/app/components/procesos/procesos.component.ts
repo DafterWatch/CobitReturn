@@ -15,6 +15,7 @@ export class ProcesosComponent implements OnInit {
   procesos: any[] = [];
   recursos: any[] = [];
   listaProcesos: any[] = [];
+  listaRecursos: any[] = [];
   dominios: any[] = [];
   listaDominios: any[] = [];
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class ProcesosComponent implements OnInit {
       });
     });
   }
+
   getRecursosFunction() {
     this._firebaseCobit.getRecursos().subscribe((data) => {
       this.recursos = [];
@@ -55,6 +57,34 @@ export class ProcesosComponent implements OnInit {
       this.listaProcesos.push(ac);
     } else {
       this.listaProcesos.splice(this.listaProcesos.indexOf(ac), 1);
+    }
+  }
+  fieldsChange2(event: any, ac: any) {
+    if (event.currentTarget.checked) {
+      this.listaRecursos.push(ac);
+    } else {
+      this.listaRecursos.splice(this.listaRecursos.indexOf(ac), 1);
+    }
+  }
+  verificarSeleccion() {
+    if (this.listaProcesos.length > 0 && this.listaRecursos.length > 0) {
+      //procesos
+      let cadena = '';
+      this.listaProcesos.forEach((element) => {
+        cadena = cadena + element + ',';
+      });
+      cadena = cadena.substring(0, cadena.length - 1);
+      sessionStorage.setItem('listaProcesos', cadena);
+      //recursos
+      cadena = '';
+      this.listaProcesos.forEach((element) => {
+        cadena = cadena + element + ',';
+      });
+      cadena = cadena.substring(0, cadena.length - 1);
+      sessionStorage.setItem('listaRecursos', cadena);
+      this.router.navigate(['/evaluacion']);
+    } else {
+      alert('Debe seleccionar al menos un dominio y/o recurso');
     }
   }
 }
