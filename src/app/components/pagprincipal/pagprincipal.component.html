@@ -12,4 +12,30 @@
     </button>
     </div>
     <br />
+    <span class="h1">REGISTRO DE EVALUACIONES</span>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Usuario</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Dominios</th>
+                <th scope="col">Procesos</th>
+                <th scope="col">Recursos</th>
+                <th scope="col">Criterios</th>
+                <th scope="col">Catalizadores</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let eva of evaluaciones">
+            <tr>
+                <th scope="row">{{ eva.usuario }}</th>
+                <td>{{ eva.fecha }}</td>
+                <td>{{ eva.area }}</td>
+                <td>{{ eva.dominios }}</td>
+                <td>{{ eva.procesos }}</td>
+                <td>{{ eva.recursos }}</td>
+                <td>{{ eva.criterios }}</td>
+                <td>{{ eva.catalizadores }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

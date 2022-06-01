@@ -47,4 +47,12 @@ export class FirebaseCobitService {
       .collection('Criterios', (ref) => ref.orderBy('id_criterio', 'desc'))
       .snapshotChanges();
   }
+  agregarEvaluacion(evaluation: any): Promise<any> {
+    return this.firestore.collection('Evaluaciones').add(evaluation);
+  }
+  getEvaluaciones(): Observable<any> {
+    return this.firestore
+      .collection('Evaluaciones', (ref) => ref.orderBy('fecha', 'desc'))
+      .snapshotChanges();
+  }
 }

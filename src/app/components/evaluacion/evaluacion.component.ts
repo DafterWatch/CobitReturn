@@ -23,7 +23,7 @@ export class EvaluacionComponent implements OnInit {
   listaCriteriosOrdenados: any[] = [];
   catalizadores: any[] = [];
   listaCatalizadores: any[] = [];
-  fecha_actual = new Date();
+  fecha_actual = new Date().toString();
   idUsuario = '';
   idArea = '';
   listaCatalizadoresString = '';
@@ -160,99 +160,81 @@ export class EvaluacionComponent implements OnInit {
       'cantidadCatalizadores'
     );
     this.createPdf();
-    //this.router.navigate(['/pagprincipal']);
+    const criteriosLista =
+      'Efectividad: ' +
+      this.efectividad +
+      ', ' +
+      'Eficiencia: ' +
+      this.eficiencia +
+      ', ' +
+      'Confidencialidad: ' +
+      this.confidencialidad +
+      ', ' +
+      'Integridad: ' +
+      this.integridad +
+      ', ' +
+      'Disponibilidad: ' +
+      this.disponibilidad +
+      ', ' +
+      'Cumplimiento: ' +
+      this.cumplimiento +
+      ', ' +
+      'Confiabilidad: ' +
+      this.confiabilidad;
+    const newevaluation: any = {
+      usuario: this.idUsuario,
+      fecha: this.fecha_actual,
+      area: this.idArea,
+      dominios: sessionStorage.getItem('listaDominios'),
+      procesos: sessionStorage.getItem('listaProcesos'),
+      recursos: sessionStorage.getItem('listaRecursos'),
+      criterios: criteriosLista,
+      catalizadores: this.listaCatalizadoresString,
+    };
+    this._firebaseCobit
+      .agregarEvaluacion(newevaluation)
+      .then(() => {
+        alert('Evaluación concluida');
+        this.router.navigate(['/pagprincipal']);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   createPdf() {
     const pdfReporte: any = {
       content: [
-        { text: 'Tables', style: 'header' },
-        'Official documentation is in progress, this document is just a glimpse of what is possible with pdfmake and its layout engine.',
         {
-          text: 'A simple table (no headers, no width specified, no spans, no styling)',
-          style: 'subheader',
+          text: 'REPORTE EVALUACIÓN EN BASE A COBIT19',
+          style: 'header',
         },
-        'The following table has nothing more than a body array',
-        {
-          style: 'tableExample',
-          table: {
-            body: [
-              ['Column 1', 'Column 2', 'Column 3'],
-              ['One value goes here', 'Another one here', 'OK?'],
-            ],
-          },
-        },
-        { text: 'A simple table with nested elements', style: 'subheader' },
-        'It is of course possible to nest any other type of nodes available in pdfmake inside table cells',
-        {
-          style: 'tableExample',
-          table: {
-            body: [
-              ['Column 1', 'Column 2', 'Column 3'],
-              [
-                {
-                  stack: [
-                    "Let's try an unordered list",
-                    {
-                      ul: ['item 1', 'item 2'],
-                    },
-                  ],
-                },
-                [
-                  'or a nested table',
-                  {
-                    table: {
-                      body: [
-                        ['Col1', 'Col2', 'Col3'],
-                        ['1', '2', '3'],
-                        ['1', '2', '3'],
-                      ],
-                    },
-                  },
-                ],
-                {
-                  text: [
-                    'Inlines can be ',
-                    { text: 'styled\n', italics: true },
-                    { text: 'easily as everywhere else', fontSize: 10 },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        { text: 'Defining column widths', style: 'subheader' },
-        'Tables support the same width definitions as standard columns:',
-        {
-          bold: true,
-          ul: ['auto', 'star', 'fixed value'],
-        },
-        {
-          style: 'tableExample',
-          table: {
-            widths: [100, '*', 200, '*'],
-            body: [
-              ['width=100', 'star-sized', 'width=200', 'star-sized'],
-              [
-                'fixed-width cells have exactly the specified width',
-                {
-                  text: 'nothing interesting here',
-                  italics: true,
-                  color: 'gray',
-                },
-                {
-                  text: 'nothing interesting here',
-                  italics: true,
-                  color: 'gray',
-                },
-                {
-                  text: 'nothing interesting here',
-                  italics: true,
-                  color: 'gray',
-                },
-              ],
-            ],
-          },
-        },
+        '\n El auditor : "' +
+          this.idUsuario +
+          '" ah realizado la evaluacion en fecha: ' +
+          this.fecha_actual +
+          '.',
+        '\n Se realizo esta evaluación al area de: ' +
+          this.idArea +
+          ' de la empresa El Ceibo.',
+        '\n Los dominios identificados para esta evaluación son: ' +
+          this.listaDominios +
+          '.',
+        '\n Los procesos identificados para esta evaluación son: ' +
+          this.listaProcesos +
+          '.',
+        '\n Los recursos identificados para esta evaluación son: ' +
+          this.listaRecursos +
+          '.',
+        '\n La cantidad de criterios que se cumplen son:',
+        'Efectividad: ' + this.efectividad,
+        'Eficiencia: ' + this.eficiencia,
+        'Disponibilidad: ' + this.disponibilidad,
+        'Confidencialidad: ' + this.confidencialidad,
+        'Integridad: ' + this.integridad,
+        'Cumplimiento: ' + this.cumplimiento,
+        'Confiabilidad: ' + this.confiabilidad,
+        '\n Los catalizadores que se lograron conseguir por parte de la empresa son: ',
+        this.listaCatalizadores,
       ],
     };
     const pdf = pdfMake.createPdf(pdfReporte);

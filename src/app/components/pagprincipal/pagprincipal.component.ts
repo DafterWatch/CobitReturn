@@ -13,14 +13,27 @@ export class PagprincipalComponent implements OnInit {
     private _firebaseCobit: FirebaseCobitService
   ) {}
   areas: any[] = [];
+  evaluaciones: any[] = [];
   ngOnInit(): void {
     this.getAreasFunction();
+    this.getEvaluacionesFunction();
   }
   getAreasFunction() {
     this._firebaseCobit.getAreas().subscribe((data) => {
       this.areas = [];
       data.forEach((element: any) => {
         this.areas.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+        });
+      });
+    });
+  }
+  getEvaluacionesFunction() {
+    this._firebaseCobit.getEvaluaciones().subscribe((data) => {
+      this.evaluaciones = [];
+      data.forEach((element: any) => {
+        this.evaluaciones.push({
           id: element.payload.doc.id,
           ...element.payload.doc.data(),
         });
