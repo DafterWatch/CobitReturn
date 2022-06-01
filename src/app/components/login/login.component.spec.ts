@@ -24,3 +24,4 @@ describe('LoginComponent', () => {
   });
 });
 //shogui ya esta ls criterios mrda
+// ya esta lo que es catalizadores ahora dejen dormir gg
