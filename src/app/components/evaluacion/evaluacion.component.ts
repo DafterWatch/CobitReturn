@@ -46,12 +46,22 @@ export class EvaluacionComponent implements OnInit {
           });
         }
       });
-      /*data.forEach((element: any) => {
-        this.catalizadores.push({
-          id: element.payload.doc.id,
-          ...element.payload.doc.data(),
-        });
-      });*/
+      this.catalizadores.sort();
+    });
+  }
+  getCriteriosFunction() {
+    this._firebaseCobit.getCriterios().subscribe((data) => {
+      this.catalizadores = [];
+      data.forEach((element: any) => {
+        let procesoX = '';
+        procesoX = element.payload.doc.data().proceso.toString();
+        if (this.listaProcesos.includes(procesoX)) {
+          this.catalizadores.push({
+            id: element.payload.doc.id,
+            ...element.payload.doc.data(),
+          });
+        }
+      });
       this.catalizadores.sort();
     });
   }

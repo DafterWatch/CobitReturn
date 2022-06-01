@@ -42,4 +42,9 @@ export class FirebaseCobitService {
       )
       .snapshotChanges();
   }
+  getCriterios(): Observable<any> {
+    return this.firestore
+      .collection('Criterios', (ref) => ref.orderBy('id_criterio', 'desc'))
+      .snapshotChanges();
+  }
 }
