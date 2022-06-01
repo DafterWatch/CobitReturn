@@ -9,7 +9,7 @@
     <br />
     <div class="row">
         <div class="col-lg-4" *ngFor="let proceso of procesos">
-            <div class="card border-dark mb-3" style="max-width: 25rem; height: 350px; max-height: 400px">
+            <div class="card border-dark mb-3" style="max-width: 25rem; height: 380px; max-height: 400px">
                 <div class="card-header">
                     <span class="float-start">{{ proceso.acronimo }}</span>
                     <div class="form-check float-end">
@@ -48,6 +48,7 @@
             </tr>
         </tbody>
     </table>
+    <br />
     <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/dominios" style="background-color: #003ca1">
     Volver Dominios
   </button>

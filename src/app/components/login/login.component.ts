@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         this.usuarios[i].contrasena === pass
       ) {
         this.validLogin = true;
-        sessionStorage.setItem('id_usuario', this.usuarios[i].id);
+        sessionStorage.setItem('id_usuario', this.usuarios[i].usuario);
         this.router.navigate(['/pagprincipal']);
       } else {
         this.validLogin = false;

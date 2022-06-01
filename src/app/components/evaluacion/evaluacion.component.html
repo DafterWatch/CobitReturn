@@ -1,171 +1,204 @@
-<body>
-    <div class="container">
-        <ul class="menu" style="float: left" data-animation="center">
-            <li style="font-size: 40px">
-                <a href="#0"> EVALUACIÓN</a>
-            </li>
-        </ul>
-        <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
-      Cerrar Sesion
-    </button>
+<div class="container mt-3 mb-3">
+    <ul class="menu" style="float: left" data-animation="center">
+        <li style="font-size: 60px">
+            <a> EVALUACIÓN</a>
+        </li>
+    </ul>
+    <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
+    Cerrar Sesion
+  </button>
 
-        <br /><br /><br />
-        <div class="subtitle">
-            <h1>Criterios y requerimientos</h1>
-        </div>
+    <br /><br /><br /><br /><br /><br />
+    <h3>Fecha: {{ fecha_actual }}</h3>
+    <br /><br />
+    <div class="subtitle">
+        <h1>Auditor</h1>
+    </div>
+    <br />
+    <h3>El auditor encargado de realizar la evaluacion fue: {{ idUsuario }}</h3>
+    <br />
+    <br />
+    <div class="subtitle">
+        <h1>Area</h1>
+    </div>
+    <br />
+    <h3>El area seleccionada para realizar la evaluacion fue: {{ idArea }}</h3>
+    <br />
+    <br />
+    <div class="subtitle">
+        <h1>Dominios</h1>
+    </div>
+    <br />
+    <h3>Los dominios que se consideraron son: {{ listaDominios }}</h3>
+    <br />
+    <br />
+    <div class="subtitle">
+        <h1>Procesos</h1>
+    </div>
+    <br />
+    <h3>Los procesos que se consideraron son: {{ listaProcesos }}</h3>
+    <br />
+    <br />
+    <div class="subtitle">
+        <h1>Recursos</h1>
+    </div>
+    <br />
+    <h3>Los recursos que se consideraron son: {{ listaRecursos }}</h3>
+    <br />
+    <br />
+    <div class="subtitle">
+        <h1>Criterios y requerimientos</h1>
+    </div>
 
-        <br />
+    <br />
 
-        <div class="cards">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="card efectividad">
-                        <h3>Efectividad</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ efectividad }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+    <div class="cards">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card efectividad">
+                    <h3>Efectividad</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ efectividad }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card eficiencia">
-                        <h3>Eficiencia</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ eficiencia }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card eficiencia">
+                    <h3>Eficiencia</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ eficiencia }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card confidencialidad">
-                        <h3>Confidencialidad</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ confidencialidad }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card confidencialidad">
+                    <h3>Confidencialidad</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ confidencialidad }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card integridad">
-                        <h3>Integridad</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ integridad }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card integridad">
+                    <h3>Integridad</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ integridad }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card disponibilidad">
-                        <h3>Disponibilidad</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ disponibilidad }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card disponibilidad">
+                    <h3>Disponibilidad</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ disponibilidad }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card cumplimiento">
-                        <h3>Cumplimiento</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ cumplimiento }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card cumplimiento">
+                    <h3>Cumplimiento</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ cumplimiento }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-sm-4 center">
-                    <div class="card confiabilidad">
-                        <h3>Confiabilidad</h3>
-                        <div class="center">
-                            <ul class="menu" data-animation="left">
-                                <a href="#0">
-                                    <h4>
-                                        Total: <span>{{ confiabilidad }}</span>
-                                    </h4>
-                                </a>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-sm-4 center">
+                <div class="card confiabilidad">
+                    <h3>Confiabilidad</h3>
+                    <div class="center">
+                        <ul class="menu" data-animation="left">
+                            <a>
+                                <h4>
+                                    Total: <span>{{ confiabilidad }}</span>
+                                </h4>
+                            </a>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <br /><br />
-        <div class="notification">
-            <h2><u> Análisis </u></h2>
-            <h4>
-                Con la automatización de estos procesos, se considera que los CRITERIOS que se cumplen mayoritariamente son:
-            </h4>
-            <br />
-            <span *ngFor="let criterio of listaCriteriosOrdenados">
-        <h4>{{ criterio.nombre }} {{ criterio.valor }}</h4>
-      </span>
-            <br />
-        </div>
-
-        <br /><br />
-
-        <div class="subtitle">
-            <h1>Catalizadores</h1>
-        </div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Obtención</th>
-                    <th scope="col">Documento</th>
-                    <th scope="col">Proceso</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let catalizador of catalizadores; let i = index">
-                <tr>
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange($event, catalizador.documento)" />
-                        </div>
-                    </td>
-                    <td>{{ catalizador.documento }}</td>
-                    <td>{{ catalizador.proceso }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <br /><br />
-        <h3>Fecha: {{ fecha_actual }}</h3>
-        <br /><br /><br /><br /><br />
     </div>
+    <br /><br />
+    <div class="notification">
+        <h2><u> Análisis </u></h2>
+        <h4>
+            Con la automatización de estos procesos, se considera que los CRITERIOS que se cumplen mayoritariamente son:
+        </h4>
+        <br />
+        <span *ngFor="let criterio of listaCriteriosOrdenados">
+      <h4>{{ criterio.nombre }} {{ criterio.valor }}</h4>
+    </span>
+        <br />
+    </div>
+
+    <br /><br />
+
+    <div class="subtitle">
+        <h1>Catalizadores</h1>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Obtención</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Proceso</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let catalizador of catalizadores; let i = index">
+            <tr>
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange($event, catalizador.documento)" />
+                    </div>
+                </td>
+                <td>{{ catalizador.documento }}</td>
+                <td>{{ catalizador.proceso }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
     <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/procesos" style="background-color: #003ca1">
     Volver Procesos
   </button>
     <button class="btn btn-lg btn-primary m-2 float-end" style="background-color: #003ca1" (click)="verificarSeleccion()">
     Siguiente
   </button>
-</body>
+</div>

@@ -7,8 +7,9 @@
         <br />
     </div>
     <div class="list-group" *ngFor="let area of areas">
-        <button type="button" class="list-group-item list-group-item-action" routerLink="/dominios" (click)="seleccionArea(area.id)">
+        <button type="button" class="list-group-item list-group-item-action" routerLink="/dominios" (click)="seleccionArea(area.nombre)">
       {{ area.nombre }}
     </button>
     </div>
+    <br />
 </div>

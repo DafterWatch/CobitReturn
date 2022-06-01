@@ -1,38 +1,28 @@
 <div class="container mt-3 mb-3">
-  <button
-    class="btn btn-lg btn-primary m-2 float-end"
-    routerLink="/login"
-    style="background-color: #003ca1"
-  >
+    <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
     Cerrar Sesion
   </button>
-  <span class="h1">DOMINIOS</span>
-  <br />
+    <span class="h1">DOMINIOS</span>
+    <br />
+    <br />
+    <br />
+    <div class="list-group separar" *ngFor="let dominio of dominios">
+        <label class="list-group-item" style="width: 550px">
+      <input
+        class="form-check-input me-1"
+        type="checkbox"
+        value=""
+        (change)="fieldsChange($event, dominio.acronimo)"
+      />
+      {{ dominio.titulo }} - {{ dominio.acronimo }}<br />
+      {{ dominio.descripcion }}
+    </label>
+    </div>
+    <br />
+    <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/pagprincipal" style="background-color: #003ca1">
+    Volver Pagina Principal
+  </button>
+    <button class="btn btn-lg btn-primary m-2 float-end" style="background-color: #003ca1" (click)="verificarSeleccion()">
+    Siguiente
+  </button>
 </div>
-<div class="list-group separar" *ngFor="let dominio of dominios">
-  <label class="list-group-item" style="width: 600px">
-    <input
-      class="form-check-input me-1"
-      type="checkbox"
-      value=""
-      (change)="fieldsChange($event, dominio.acronimo)"
-    />
-    {{ dominio.titulo }} - {{ dominio.acronimo }}<br />
-    {{ dominio.descripcion }}
-  </label>
-</div>
-<br />
-<button
-  class="btn btn-lg btn-primary m-2 float-start"
-  routerLink="/pagprincipal"
-  style="background-color: #003ca1"
->
-  Volver Pagina Principal
-</button>
-<button
-  class="btn btn-lg btn-primary m-2 float-end"
-  style="background-color: #003ca1"
-  (click)="verificarSeleccion()"
->
-  Siguiente
-</button>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-evaluacion',
@@ -21,10 +24,14 @@ export class EvaluacionComponent implements OnInit {
   catalizadores: any[] = [];
   listaCatalizadores: any[] = [];
   fecha_actual = new Date();
+  idUsuario = '';
+  idArea = '';
+  listaCatalizadoresString = '';
+  listaCantCatalizadoresString = '';
   ngOnInit(): void {
     window.scroll(0, 0);
-    let idUsuario = sessionStorage.getItem('id_usuario');
-    let idArea = sessionStorage.getItem('id_area');
+    this.idUsuario = sessionStorage.getItem('id_usuario');
+    this.idArea = sessionStorage.getItem('id_area');
     this.listaDominios = sessionStorage.getItem('listaDominios').split(',');
     this.listaProcesos = sessionStorage.getItem('listaProcesos').split(',');
     this.listaRecursos = sessionStorage.getItem('listaRecursos').split(',');
@@ -138,21 +145,117 @@ export class EvaluacionComponent implements OnInit {
     }
   }
   verificarSeleccion() {
-    if (this.listaCatalizadores.length > 0) {
-      let cadena = '';
-      let cant = 0;
-      this.listaCatalizadores.forEach((element) => {
-        cant++;
-        cadena = cadena + element + ',';
-      });
-      cadena = cadena.substring(0, cadena.length - 1);
-      sessionStorage.setItem('listaCatalizadores', cadena);
-      sessionStorage.setItem('cantidadCatalizadores', cant.toString());
-      this.router.navigate(['/reporte-final']);
-    } else {
-      sessionStorage.setItem('listaCatalizadores', '');
-      sessionStorage.setItem('cantidadCatalizadores', '0');
-      this.router.navigate(['/reporte-final']);
-    }
+    let cadena = '';
+    let cant = 0;
+    this.listaCatalizadores.forEach((element) => {
+      cant++;
+      cadena = cadena + element + ',';
+    });
+    cadena = cadena.substring(0, cadena.length - 1);
+    sessionStorage.setItem('listaCatalizadores', cadena);
+    sessionStorage.setItem('cantidadCatalizadores', cant.toString());
+    this.listaCatalizadoresString =
+      sessionStorage.getItem('listaCatalizadores');
+    this.listaCantCatalizadoresString = sessionStorage.getItem(
+      'cantidadCatalizadores'
+    );
+    this.createPdf();
+    //this.router.navigate(['/pagprincipal']);
+  }
+  createPdf() {
+    const pdfReporte: any = {
+      content: [
+        { text: 'Tables', style: 'header' },
+        'Official documentation is in progress, this document is just a glimpse of what is possible with pdfmake and its layout engine.',
+        {
+          text: 'A simple table (no headers, no width specified, no spans, no styling)',
+          style: 'subheader',
+        },
+        'The following table has nothing more than a body array',
+        {
+          style: 'tableExample',
+          table: {
+            body: [
+              ['Column 1', 'Column 2', 'Column 3'],
+              ['One value goes here', 'Another one here', 'OK?'],
+            ],
+          },
+        },
+        { text: 'A simple table with nested elements', style: 'subheader' },
+        'It is of course possible to nest any other type of nodes available in pdfmake inside table cells',
+        {
+          style: 'tableExample',
+          table: {
+            body: [
+              ['Column 1', 'Column 2', 'Column 3'],
+              [
+                {
+                  stack: [
+                    "Let's try an unordered list",
+                    {
+                      ul: ['item 1', 'item 2'],
+                    },
+                  ],
+                },
+                [
+                  'or a nested table',
+                  {
+                    table: {
+                      body: [
+                        ['Col1', 'Col2', 'Col3'],
+                        ['1', '2', '3'],
+                        ['1', '2', '3'],
+                      ],
+                    },
+                  },
+                ],
+                {
+                  text: [
+                    'Inlines can be ',
+                    { text: 'styled\n', italics: true },
+                    { text: 'easily as everywhere else', fontSize: 10 },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        { text: 'Defining column widths', style: 'subheader' },
+        'Tables support the same width definitions as standard columns:',
+        {
+          bold: true,
+          ul: ['auto', 'star', 'fixed value'],
+        },
+        {
+          style: 'tableExample',
+          table: {
+            widths: [100, '*', 200, '*'],
+            body: [
+              ['width=100', 'star-sized', 'width=200', 'star-sized'],
+              [
+                'fixed-width cells have exactly the specified width',
+                {
+                  text: 'nothing interesting here',
+                  italics: true,
+                  color: 'gray',
+                },
+                {
+                  text: 'nothing interesting here',
+                  italics: true,
+                  color: 'gray',
+                },
+                {
+                  text: 'nothing interesting here',
+                  italics: true,
+                  color: 'gray',
+                },
+              ],
+            ],
+          },
+        },
+      ],
+    };
+    const pdf = pdfMake.createPdf(pdfReporte);
+    pdf.open();
   }
 }
