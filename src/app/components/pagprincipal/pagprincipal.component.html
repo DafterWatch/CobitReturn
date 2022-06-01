@@ -1,41 +1,49 @@
-<div class="container mt-3 mb-3">
-    <div class="card-body">
+<div class="container mb-3">
+    <div class="card-body col-12 col-lg-12">
         <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
       Cerrar Sesion
     </button>
         <span class="h1">AREAS PARA REALIZAR AUDITORIA</span>
         <br />
     </div>
-    <div class="list-group" *ngFor="let area of areas">
-        <button type="button" class="list-group-item list-group-item-action" routerLink="/dominios" (click)="seleccionArea(area.nombre)">
-      {{ area.nombre }}
-    </button>
-    </div>
+    <div class="row">
+        <div class="">
+            <div class="list-group p-2 col-12 col-lg-12  " *ngFor="let area of areas">
+                <button type="button" class="list-group-item list-group-item-action" routerLink="/dominios" (click)="seleccionArea(area.nombre)">
+              {{ area.nombre }}
+            </button>
+            </div>
+        </div>
+    </div> 
     <br />
     <span class="h1">REGISTRO DE EVALUACIONES</span>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Usuario</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Dominios</th>
-                <th scope="col">Procesos</th>
-                <th scope="col">Recursos</th>
-                <th scope="col">Criterios</th>
-                <th scope="col">Catalizadores</th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let eva of evaluaciones">
-            <tr>
-                <th scope="row">{{ eva.usuario }}</th>
-                <td>{{ eva.fecha }}</td>
-                <td>{{ eva.area }}</td>
-                <td>{{ eva.dominios }}</td>
-                <td>{{ eva.procesos }}</td>
-                <td>{{ eva.recursos }}</td>
-                <td>{{ eva.criterios }}</td>
-                <td>{{ eva.catalizadores }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row col-12">
+        <table class="table">
+            <thead>
+                <tr class="col-12">
+                    <th scope="col" class="col-lg-1 col-12 bg-warning border border-3 border-secondary">Usuario</th>
+                    <th scope="col" class="col-lg-2 col-12 bg-warning border border-3 border-secondary">Fecha</th>
+                    <th scope="col" class="col-lg-1 col-12 bg-warning border border-3 border-secondary">Dominios</th>
+                    <th scope="col" class="col-lg-1 col-12 bg-warning border border-3 border-secondary">Procesos</th>
+                    <th scope="col" class="col-lg-1 col-12 bg-warning border border-3 border-secondary">Recursos</th>
+                    <th scope="col" class="col-lg-2 col-12 bg-warning border border-3 border-secondary">Criterios</th>
+                    <th scope="col"class="col-lg-4 col-12 bg-warning border border-3 border-secondary">Procesos identificados</th>
+                    <th scope="col"class="col-lg-2 col-12 bg-warning border border-3 border-secondary">Catalizadores</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let eva of evaluaciones">
+                <tr>
+                    <th scope="row" class="col-lg-1 col-12 bg-info">{{ eva.usuario }}</th>
+                    <td class="col-lg-2 col-12 border border-3 border-secondary">{{ eva.fecha }}</td>
+                    <td class="col-lg-1 col-12 border border-3 border-secondary">{{ eva.area }}</td>
+                    <td class="col-lg-1 col-12 border border-3 border-secondary">{{ eva.dominios }}</td>
+                    <td class="col-lg-1 col-12 border border-3 border-secondary">{{ eva.procesos }}</td>
+                    <td class="col-lg-2 col-12 border border-3 border-secondary">{{ eva.recursos }}</td>
+                    <td class="col-lg-4 col-12 border border-3 border-secondary" >{{ eva.criterios }}</td>
+                    <td class="col-lg-2 col-12 border border-3 border-secondary">{{ eva.catalizadores }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
 </div>
