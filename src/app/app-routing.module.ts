@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { ProcesosComponent } from './components/procesos/procesos.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
