@@ -110,7 +110,7 @@ export class RegistroComponent implements OnInit {
     for (var i = 0; i < 5; i++) {
       this.contrasena += this.getRandomInt(9);
     }
-    console.log(this.contrasena);
+    alert('Su contraseña es: ' + this.contrasena);
 
     return this.contrasena;
   }

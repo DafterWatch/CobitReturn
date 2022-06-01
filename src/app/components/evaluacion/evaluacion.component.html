@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="menu" style="float: left" data-animation="center">
             <li style="font-size: 40px">
-                <a href="#0"> EVALUACIÓN </a>
+                <a href="#0"> EVALUACIÓN</a>
             </li>
         </ul>
         <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
@@ -136,7 +136,6 @@
         <div class="subtitle">
             <h1>Catalizadores</h1>
         </div>
-        <br /><br />
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -151,7 +150,7 @@
                     <th scope="row">{{ i + 1 }}</th>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" />
+                            <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange($event, catalizador.documento)" />
                         </div>
                     </td>
                     <td>{{ catalizador.documento }}</td>
@@ -159,12 +158,14 @@
                 </tr>
             </tbody>
         </table>
+        <br /><br />
+        <h3>Fecha: {{ fecha_actual }}</h3>
         <br /><br /><br /><br /><br />
     </div>
     <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/procesos" style="background-color: #003ca1">
     Volver Procesos
   </button>
-    <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/reporte-final" style="background-color: #003ca1">
-    Finalizar
+    <button class="btn btn-lg btn-primary m-2 float-end" style="background-color: #003ca1" (click)="verificarSeleccion()">
+    Siguiente
   </button>
 </body>

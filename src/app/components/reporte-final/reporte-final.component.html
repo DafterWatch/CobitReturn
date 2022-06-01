@@ -1,10 +1,9 @@
-<body>
+<div class="container">
     <h1>REPORTE</h1>
 
-    <h3>Fecha: {{fecha_actual}}</h3>
+    <h3>Fecha: {{ fecha_actual }}</h3>
 
     <h3>Catalizadores que se obtuvieron en el reporte.</h3>
-    <br>
     <table class="table">
         <thead class="table-dark">
             <th scope="col">#</th>
@@ -18,47 +17,47 @@
                 <td>Ejemplo de un catalizador</td>
                 <td>Planear y organizar (PO)</td>
                 <td>PO4</td>
-              </tr>
+            </tr>
         </tbody>
-      </table>
+    </table>
 
     <h3>Criterios calculados:</h3>
     <div class="criterios">
         <ul class="list-group list-group-horizontal">
             <li class="list-group-item">CRITERIOS Y REQUERIMIENTOS</li>
             <li class="list-group-item">CANTIDAD</li>
-          </ul>
+        </ul>
         <ul class="list-group list-group-horizontal">
             <li class="list-group-item">Efectividad</li>
-            <li class="list-group-item">{{n_efectividad}}</li>
-          </ul>
-          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">{{ n_efectividad }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Eficiencia</li>
-            <li class="list-group-item">{{n_eficiencia}}</li>
-          </ul>
-          <ul class="list-group list-group-horizontal-md">
+            <li class="list-group-item">{{ n_eficiencia }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal-md">
             <li class="list-group-item">Confidencialidad</li>
-            <li class="list-group-item">{{n_confidencialidad}}</li>
-          </ul>
-          <ul class="list-group list-group-horizontal-lg">
+            <li class="list-group-item">{{ n_confidencialidad }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal-lg">
             <li class="list-group-item">Integridad</li>
-            <li class="list-group-item">{{n_integridad}}</li>
-          </ul>
-          <ul class="list-group list-group-horizontal-xl">
+            <li class="list-group-item">{{ n_integridad }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal-xl">
             <li class="list-group-item">Disponibilidad</li>
-            <li class="list-group-item">{{n_disponibilidad}}</li>
-          </ul>
-          <ul class="list-group list-group-horizontal-xxl">
+            <li class="list-group-item">{{ n_disponibilidad }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal-xxl">
             <li class="list-group-item">Cumplimiento</li>
-            <li class="list-group-item">{{n_cumplimiento}}</li>
-          </ul>
-          <ul class="list-group list-group-horizontal-xxl">
+            <li class="list-group-item">{{ n_cumplimiento }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal-xxl">
             <li class="list-group-item">Confiabilidad</li>
-            <li class="list-group-item">{{n_confiabilidad}}</li>
-          </ul>
+            <li class="list-group-item">{{ n_confiabilidad }}</li>
+        </ul>
     </div>
 
-    <br><br>
+    <br /><br />
 
     <h3>RECURSOS DE TI</h3>
     <ol class="list-group list-group-numbered">
@@ -67,15 +66,9 @@
         <li class="list-group-item">Instalaciones</li>
         <li class="list-group-item">Tecnologia</li>
         <li class="list-group-item">Personal</li>
-      </ol>
+    </ol>
 
-
-   
-      <button
-      class="btn btn-lg btn-primary m-2 float-end"
-      style="background-color: #003ca1"
-      (click)="createPdf()"
-    >
-      Generar PDF
-    </button>
-</body>
+    <button class="btn btn-lg btn-primary m-2 float-end" style="background-color: #003ca1" (click)="createPdf()">
+    Generar PDF
+  </button>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
   styleUrls: ['./evaluacion.component.scss'],
 })
 export class EvaluacionComponent implements OnInit {
-  constructor(private _firebaseCobit: FirebaseCobitService) {}
+  constructor(
+    private _firebaseCobit: FirebaseCobitService,
+    private router: Router
+  ) {}
 
   listaDominios: any[] = [];
   listaProcesos: any[] = [];
@@ -16,6 +20,7 @@ export class EvaluacionComponent implements OnInit {
   listaCriteriosOrdenados: any[] = [];
   catalizadores: any[] = [];
   listaCatalizadores: any[] = [];
+  fecha_actual = new Date();
   ngOnInit(): void {
     window.scroll(0, 0);
     let idUsuario = sessionStorage.getItem('id_usuario');
@@ -23,7 +28,7 @@ export class EvaluacionComponent implements OnInit {
     this.listaDominios = sessionStorage.getItem('listaDominios').split(',');
     this.listaProcesos = sessionStorage.getItem('listaProcesos').split(',');
     this.listaRecursos = sessionStorage.getItem('listaRecursos').split(',');
-    console.log(
+    /*console.log(
       'ID Usuario: ' + idUsuario,
       'ID Area: ' + idArea,
       'lista dominios',
@@ -32,7 +37,7 @@ export class EvaluacionComponent implements OnInit {
       this.listaProcesos,
       'lista recursos',
       this.listaRecursos
-    );
+    );*/
     this.getCatalizadoresFunction();
     this.getCriteriosFunction();
   }
@@ -124,5 +129,30 @@ export class EvaluacionComponent implements OnInit {
       });
       this.listaCriteriosOrdenados.sort(this.compare);
     });
+  }
+  fieldsChange(event: any, ac: any) {
+    if (event.currentTarget.checked) {
+      this.listaCatalizadores.push(ac);
+    } else {
+      this.listaCatalizadores.splice(this.listaCatalizadores.indexOf(ac), 1);
+    }
+  }
+  verificarSeleccion() {
+    if (this.listaCatalizadores.length > 0) {
+      let cadena = '';
+      let cant = 0;
+      this.listaCatalizadores.forEach((element) => {
+        cant++;
+        cadena = cadena + element + ',';
+      });
+      cadena = cadena.substring(0, cadena.length - 1);
+      sessionStorage.setItem('listaCatalizadores', cadena);
+      sessionStorage.setItem('cantidadCatalizadores', cant.toString());
+      this.router.navigate(['/reporte-final']);
+    } else {
+      sessionStorage.setItem('listaCatalizadores', '');
+      sessionStorage.setItem('cantidadCatalizadores', '0');
+      this.router.navigate(['/reporte-final']);
+    }
   }
 }
