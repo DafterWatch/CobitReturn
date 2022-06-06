@@ -14,14 +14,30 @@ import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'pagprincipal', component: PagprincipalComponent,canActivate:[AuthGuard] },
-  { path: 'dominios', component: DominiosComponent,canActivate:[AuthGuard] },
-  { path: 'procesos', component: ProcesosComponent,canActivate:[AuthGuard] },
-  { path: 'evaluacion', component: EvaluacionComponent,canActivate:[AuthGuard] },
-  { path: 'registro', component: RegistroComponent,canActivate:[AuthGuard] },
-  { path: 'reporte-final', component: ReporteFinalComponent,canActivate:[AuthGuard] },
-  { path: 'perfil', component: PerfilComponent,canActivate:[AuthGuard] },
-  { path: 'modificarPerfil', component: ModificarPerfilComponent,canActivate:[AuthGuard] },
+  {
+    path: 'pagprincipal',
+    component: PagprincipalComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'dominios', component: DominiosComponent, canActivate: [AuthGuard] },
+  { path: 'procesos', component: ProcesosComponent, canActivate: [AuthGuard] },
+  {
+    path: 'evaluacion',
+    component: EvaluacionComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'registro', component: RegistroComponent },
+  {
+    path: 'reporte-final',
+    component: ReporteFinalComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
+  {
+    path: 'modificarPerfil',
+    component: ModificarPerfilComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
