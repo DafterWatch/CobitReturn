@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseCobitService {
-  constructor(private firestore: AngularFirestore) {}
+
+  public userData$=false;
+
+  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+
+  }
   getDominios(): Observable<any> {
     return this.firestore
       .collection('Dominios', (ref) => ref.orderBy('id_dominios', 'asc'))
@@ -55,4 +61,11 @@ export class FirebaseCobitService {
       .collection('Evaluaciones', (ref) => ref.orderBy('fecha', 'desc'))
       .snapshotChanges();
   }
+  stateLogin() {
+    return this.userData$;
+  }
+  ChangeLogin(value) {
+    return this.userData$=value;
+  }
+
 }
