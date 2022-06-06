@@ -6,8 +6,9 @@
     <br />
     <br />
     <br />
-    <div class="list-group separar col-12" *ngFor="let dominio of dominios">
-        <label class="list-group-item" style="width: 550px">
+    <div class="row">
+      <div class="list-group separar col-12 p-1" *ngFor="let dominio of dominios">
+        <label class="list-group-item col-12 col-sm-6 ">
       <input
         class="form-check-input me-1"
         type="checkbox"
@@ -18,6 +19,8 @@
       {{ dominio.descripcion }}
     </label>
     </div>
+    </div>
+    
     <br />
     <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/pagprincipal" style="background-color: #003ca1">
     Volver Pagina Principal

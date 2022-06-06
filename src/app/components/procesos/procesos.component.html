@@ -1,58 +1,90 @@
 <div class="container mt-3 mb-3">
-    <div class="card-body">
-        <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
+  <div class="card-body">
+    <button
+      class="btn btn-lg btn-primary m-2 float-end"
+      routerLink="/login"
+      style="background-color: #003ca1"
+    >
       Cerrar Sesion
     </button>
-        <span class="h1">PROCESOS</span>
-        <br />
-    </div>
+    <span class="h1">PROCESOS</span>
     <br />
-    <div class="row">
-        <div class="col-lg-4" *ngFor="let proceso of procesos">
-            <div class="card border-dark mb-3" style="max-width: 25rem; height: 380px; max-height: 400px">
-                <div class="card-header">
-                    <span class="float-start">{{ proceso.acronimo }}</span>
-                    <div class="form-check float-end">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange($event, proceso.acronimo)" />
-                        <label class="form-check-label" for="flexCheckDefault">
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let proceso of procesos">
+      <div
+        class="card border-dark mb-3"
+        style="max-width: 25rem; height: 380px; max-height: 400px"
+      >
+        <div class="card-header">
+          <span class="float-start">{{ proceso.acronimo }}</span>
+          <div class="form-check float-end">
+            <input
+              class="form-check-input me-1"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+              (change)="fieldsChange($event, proceso.acronimo)"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
               AGREGAR
             </label>
-                    </div>
-                </div>
-                <div class="card-body text-dark">
-                    <h5 class="card-title">{{ proceso.titulo }}</h5>
-                    <p class="card-text">{{ proceso.descripcion }}</p>
-                </div>
-            </div>
-            <br />
+          </div>
         </div>
+        <div class="card-body text-dark">
+          <h5 class="card-title">{{ proceso.titulo }}</h5>
+          <p class="card-text">{{ proceso.descripcion }}</p>
+        </div>
+      </div>
+      <br />
     </div>
-    <span class="h1">RECURSOS DE TI</span>
-    <table class="table table-striped table-hover" style="width: 500px">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Selección</th>
-                <th scope="col">Nombre</th>
-            </tr>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <span class="h1 align-items-center justify-content-center d-flex">RECURSOS DE TI</span>
+      <table class="table table-striped table-hover">
+        <thead class="col-12">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Selección</th>
+            <th scope="col">Nombre</th>
+          </tr>
         </thead>
         <tbody *ngFor="let recurso of recursos">
-            <tr>
-                <th scope="row">{{ recurso.id_recurso }}</th>
-                <td>
-                    <div class="form-check">
-                        <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange2($event, recurso.nombre)" />
-                    </div>
-                </td>
-                <td>{{ recurso.nombre }}</td>
-            </tr>
+          <tr>
+            <th scope="row">{{ recurso.id_recurso }}</th>
+            <td>
+              <div class="form-check">
+                <input
+                  class="form-check-input center"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                  (change)="fieldsChange2($event, recurso.nombre)"
+                />
+              </div>
+            </td>
+            <td>{{ recurso.nombre }}</td>
+          </tr>
         </tbody>
-    </table>
-    <br />
-    <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/dominios" style="background-color: #003ca1">
+      </table>
+    </div>
+  </div>
+
+  <br />
+  <button
+    class="btn btn-lg btn-primary m-2 float-start"
+    routerLink="/dominios"
+    style="background-color: #003ca1"
+  >
     Volver Dominios
   </button>
-    <button class="btn btn-lg btn-primary m-2 float-end" style="background-color: #003ca1" (click)="verificarSeleccion()">
+  <button
+    class="btn btn-lg btn-primary m-2 float-end"
+    style="background-color: #003ca1"
+    (click)="verificarSeleccion()"
+  >
     Siguiente
   </button>
 </div>
