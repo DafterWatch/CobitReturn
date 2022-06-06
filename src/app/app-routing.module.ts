@@ -7,6 +7,8 @@ import { EvaluacionComponent } from './components/evaluacion/evaluacion.componen
 import { LoginComponent } from './components/login/login.component';
 import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.component';
 import { ProcesosComponent } from './components/procesos/procesos.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'evaluacion', component: EvaluacionComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'reporte-final', component: ReporteFinalComponent },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'modificarPerfil', component: ModificarPerfilComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

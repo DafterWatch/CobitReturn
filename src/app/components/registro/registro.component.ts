@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
   usuarios: any[] = [];
+  modalSwitch:boolean = false;
   abecedario = [
     'a',
     'b',
@@ -78,6 +79,7 @@ export class RegistroComponent implements OnInit {
     this.submitted = true;
     if (this.registerUsuario.invalid) {
       console.log('Falta campos');
+      this.validRegister=false;
       return;
     }
     console.log('Campos llenos');
@@ -92,9 +94,8 @@ export class RegistroComponent implements OnInit {
     this._firebaseCobit
       .agregarUsuario(usernew)
       .then(() => {
-        console.log('Registrado');
-        alert('Registrado!');
-        this.router.navigate(['/login']);
+        this.modalSwitch=true;
+        //desplegar carta de perfil y redirigir a login
       })
       .catch((error) => {
         console.log(error);
@@ -110,7 +111,7 @@ export class RegistroComponent implements OnInit {
     for (var i = 0; i < 5; i++) {
       this.contrasena += this.getRandomInt(9);
     }
-    alert('Su contraseña es: ' + this.contrasena);
+    //alert('Su contraseña es: ' + this.contrasena);
 
     return this.contrasena;
   }

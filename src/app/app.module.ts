@@ -14,6 +14,9 @@ import { PagprincipalComponent } from './components/pagprincipal/pagprincipal.co
 import { DominiosComponent } from './components/dominios/dominios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ReporteFinalComponent } from './components/reporte-final/reporte-final.component';
+import { PerfilModalComponent } from './components/perfil-modal/perfil-modal.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 
 
 const firebaseConfig = {
@@ -35,7 +38,10 @@ const firebaseConfig = {
     PagprincipalComponent,
     DominiosComponent,
     RegistroComponent,
-    ReporteFinalComponent
+    ReporteFinalComponent,
+    PerfilModalComponent,
+    PerfilComponent,
+    ModificarPerfilComponent
   ],
   imports: [
     BrowserModule,

@@ -2,13 +2,17 @@
     <div class="padre">
         <div class="hijo_uno">
             <br /><br />
-            <h1>Registrate</h1>
+            <h1 *ngIf="modalSwitch == false">Registrate</h1>
+            <h1 *ngIf="modalSwitch == true">Registrado</h1>
         </div>
         <br />
 
-        <div class="hijo_uno color">
+        <div class="hijo_uno color" *ngIf="modalSwitch == false">
             <form [formGroup]="registerUsuario" (ngSubmit)="crearUser(name.value, lastname.value, username.value)">
                 <!-- Email input -->
+                <span *ngIf="!validRegister" class="badge bg-danger"
+        >Debe llenar todos los campos</span
+      >
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3">Nombre</label>
                     <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ingrese su nombre" formControlName="name" #name />
@@ -36,6 +40,9 @@
                     </p>
                 </div>
             </form>
+        </div>
+        <div *ngIf="modalSwitch == true">
+            <app-perfil-modal></app-perfil-modal>
         </div>
     </div>
 </body>

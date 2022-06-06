@@ -1,0 +1,19 @@
+<h2 style="margin-top: 30px;" class="padre">PERFIL DE USUARIO</h2>
+<br><br>
+<div class="padre">
+    <div class="card">
+      <h5 class="card-header">Datos - {{nombre}} {{apellido}}</h5>
+      <div class="card-body">
+        <h5 class="card-title padre">Usuario: {{usuario}}</h5>
+        <h5 class="card-title padre ">
+          Contraseña: {{contrasena}} </h5>
+        <br>
+        <h5>Fecha de creación: {{fecha_creacion | date:'short'}}</h5>
+
+        <br>
+        <a type="button" class="btn btn-secondary padre" (click)="editPerfil()">Editar información</a>
+        <br>
+        <a class="btn btn-primary padre" (click)="returnSistem()">Volver al sistema</a>
+      </div>
+    </div>
+  </div>
