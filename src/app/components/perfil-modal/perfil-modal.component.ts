@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 
 @Component({
   selector: 'app-perfil-modal',
@@ -13,10 +14,10 @@ export class PerfilModalComponent implements OnInit {
   contrasena:string;
   fecha_creacion:Date;
   usuario:string;
-
+  usuarios = [];
   contrasenaGuardada:boolean=false;
 
-  constructor(private router:Router) {
+  constructor(private router:Router,private _firebaseCobit:FirebaseCobitService) {
     
    }
 
@@ -32,8 +33,6 @@ export class PerfilModalComponent implements OnInit {
     this.contrasena='Fakecontrasena'
     this.fecha_creacion=new Date()
     this.usuario='Fakeusuario'
-
-
   }
   VerificarSeguridad(){
     if(this.contrasenaGuardada==false){
@@ -44,6 +43,17 @@ export class PerfilModalComponent implements OnInit {
   }
   cambiarCheck(value){
     this.contrasenaGuardada=!value;
+  }
+  getUsuario() {
+    this._firebaseCobit.getUsuarios().subscribe((data) => {
+      this.usuarios = [];
+      data.forEach((element: any) => {
+        this.usuarios.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data(),
+        });
+      });
+    });
   }
   
 

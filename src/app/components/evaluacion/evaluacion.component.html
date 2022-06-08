@@ -7,6 +7,9 @@
     <button class="btn btn-lg btn-primary m-2 float-end" routerLink="/login" style="background-color: #003ca1">
     Cerrar Sesion
   </button>
+  <button class="btn btn-lg btn-primary m-2 float-end" (click)="obtenerDominios()" style="background-color: #003ca1">
+    PDF
+  </button>
 
     <br /><br /><br /><br /><br /><br />
     <h3>Fecha: {{ fecha_actual }}</h3>
@@ -178,6 +181,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Obtención</th>
                 <th scope="col">Documento</th>
+                <th scope="col">Catalizador</th>
                 <th scope="col">Proceso</th>
             </tr>
         </thead>
@@ -186,10 +190,11 @@
                 <th scope="row">{{ i + 1 }}</th>
                 <td>
                     <div class="form-check">
-                        <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange($event, catalizador.documento)" />
+                        <input class="form-check-input center" type="checkbox" value="" id="flexCheckDefault" (change)="fieldsChange($event, catalizador.documento,catalizador.proceso,catalizador.id_catalizador)" />
                     </div>
                 </td>
                 <td>{{ catalizador.documento }}</td>
+                <td>{{ catalizador.id_catalizador }}</td>
                 <td>{{ catalizador.proceso }}</td>
             </tr>
         </tbody>
