@@ -91,6 +91,12 @@ export class RegistroComponent implements OnInit {
       nombre: this.registerUsuario.value.name,
       usuario: this.registerUsuario.value.username,
     };
+    //alert(usernew.id_usuario)
+    sessionStorage.setItem('nombre',this.registerUsuario.value.name,)
+    sessionStorage.setItem('apellido', this.registerUsuario.value.lastname)
+    sessionStorage.setItem('contrasena', this.generarContrasena())
+    sessionStorage.setItem('fecha', new Date().toDateString())
+    sessionStorage.setItem('usuario', this.registerUsuario.value.username)
     this._firebaseCobit
       .agregarUsuario(usernew)
       .then(() => {
@@ -125,7 +131,7 @@ export class RegistroComponent implements OnInit {
       this.usuarios = [];
       sessionStorage.setItem('cantUsuarios', data.length.toString());
       data.forEach((element: any) => {
-        this.cantidadUsuario = element.payload.doc.id;
+        this.cantidadUsuario = this.generarContrasena();
         this.usuarios.push({
           id: element.payload.doc.id,
           ...element.payload.doc.data(),

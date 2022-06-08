@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class FirebaseCobitService {
 
   public userData$=false;
+  public idData=false;
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
 
@@ -66,6 +67,13 @@ export class FirebaseCobitService {
   }
   ChangeLogin(value) {
     return this.userData$=value;
+  }
+  getUsuario(id:string):Observable<any>{
+    return this.firestore.collection('Usuarios').doc(id).snapshotChanges();
+  }
+ 
+  getIdUsuario(){
+    return this.idData;
   }
 
 }

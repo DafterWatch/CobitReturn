@@ -21,14 +21,8 @@ export class PerfilComponent implements OnInit {
   }
 
   obtenerDatos(){
-
-    this.nombre='FakeName'
-    this.apellido='FakeApellido'
-    this.contrasena='Fakecontrasena'
-    this.fecha_creacion=new Date()
-    this.usuario='Fakeusuario'
-
-
+    this.usuario = sessionStorage.getItem('usuario');
+    this.contrasena = sessionStorage.getItem('contrasena');
   }
   returnSistem(){
     this.router.navigate(['/pagprincipal']);
