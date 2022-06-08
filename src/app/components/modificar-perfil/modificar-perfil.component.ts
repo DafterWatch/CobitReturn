@@ -17,6 +17,7 @@ export class ModificarPerfilComponent implements OnInit {
   contrasena:string;
   fecha_creacion:Date;
   usuario:string;
+  id_UserActive;
 
   constructor(
     private fb: FormBuilder,
@@ -62,4 +63,23 @@ this.validModifier=true;
   
   
     }
+   /* editarUsuario(){
+      this.id_UserActive=this._firebaseCobit.getuserActive();
+      if(this.id_UserActive !== null){
+        const usuario:any = {
+          name: this.modificarUser.name,
+          Imagen: this.createProducto.value.Imagen,
+          Descripcion: this.createProducto.value.Descripcion,
+          Establecimiento: this.createProducto.value.Establecimiento,
+          Costo: this.createProducto.value.Costo,
+          Cantidad: this.createProducto.value.Cantidad,
+        }
+        this.agregarRegistro()  
+        this._vetService.actualizarProducto(this.id, producto).then(() => {        
+          this.router.navigate(['/menuproductos']);
+        })
+      } 
+    }*/
+    
+  
 }

@@ -14,26 +14,46 @@ export class PerfilModalComponent implements OnInit {
   contrasena:string;
   fecha_creacion:Date;
   usuario:string;
-  usuarios = [];
   contrasenaGuardada:boolean=false;
+  id_UserActive:any;
+  usuarioRegistrado;
+
 
   constructor(private router:Router,private _firebaseCobit:FirebaseCobitService) {
-    
    }
 
   ngOnInit(): void {
-    this.obtenerDatos()
+    this.obtenerDatos();
   }
 
   /*Aqui rescata datos del user*/
   obtenerDatos(){
-
-    this.nombre='FakeName'
-    this.apellido='FakeApellido'
-    this.contrasena='Fakecontrasena'
-    this.fecha_creacion=new Date()
-    this.usuario='Fakeusuario'
+  
+    this.id_UserActive=this._firebaseCobit.getuserActive();
+alert("entra al metodo")
+    if(this.id_UserActive !== null){
+      alert("entra al if")
+      this._firebaseCobit.getUserId(this.id_UserActive).subscribe(data => {
+        alert("entra al cobitservice")
+        this.usuarioRegistrado.setValue({
+          name: data.payload.data()['name'],
+          apellido: data.payload.data()['apellido'],
+          usuario: data.payload.data()['usuario'],
+          contrasena: data.payload.data()['contrasena'],
+          fecha_creacion: data.payload.data()['fecha_creacion'],
+        })
+        
+      })
+      alert("entra al asignacion")
+      this.nombre=this.usuarioRegistrado.name;
+        this.apellido=this.usuarioRegistrado.apellido;
+        this.usuario=this.usuarioRegistrado.usuario;
+        this.contrasena=this.usuarioRegistrado.contrasena;
+        this.fecha_creacion=this.usuarioRegistrado.fecha_creacion;
+    }
   }
+
+
   VerificarSeguridad(){
     if(this.contrasenaGuardada==false){
       alert("Confirme que guardo su contraseña.")
@@ -44,17 +64,7 @@ export class PerfilModalComponent implements OnInit {
   cambiarCheck(value){
     this.contrasenaGuardada=!value;
   }
-  getUsuario() {
-    this._firebaseCobit.getUsuarios().subscribe((data) => {
-      this.usuarios = [];
-      data.forEach((element: any) => {
-        this.usuarios.push({
-          id: element.payload.doc.id,
-          ...element.payload.doc.data(),
-        });
-      });
-    });
-  }
+  
   
 
 }

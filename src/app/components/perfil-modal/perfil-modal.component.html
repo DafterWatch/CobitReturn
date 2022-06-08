@@ -1,3 +1,6 @@
+<br><br><br>
+<h1 class="padre">Registrado</h1>
+
 <div class="padre">
   <div class="card">
     <h5 class="card-header">Datos - {{nombre}} {{apellido}}</h5>
@@ -17,6 +20,7 @@
       <p class="card-text"><b>Nota:</b> La contraseña es generada automaticamente,<b> debe copiada para su primer inicio de sesión</b>, puede ser actualizada en las opciones
         de PERFIL.</p>
       <br>
+      <a class="btn btn-primary padre" (click)="obtenerDatos()">ObtenerDatos</a>
       <a class="btn btn-primary padre" (click)="VerificarSeguridad()">Continuar a iniciar sesión</a>
     </div>
   </div>

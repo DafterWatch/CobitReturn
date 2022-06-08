@@ -10,6 +10,7 @@ import { ProcesosComponent } from './components/procesos/procesos.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 import { AuthGuard } from './services/auth.guard';
+import { PerfilModalComponent } from './components/perfil-modal/perfil-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
+  { path: 'perfilModal', component: PerfilModalComponent },
   {
     path: 'modificarPerfil',
     component: ModificarPerfilComponent,

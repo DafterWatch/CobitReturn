@@ -91,10 +91,11 @@ export class RegistroComponent implements OnInit {
       nombre: this.registerUsuario.value.name,
       usuario: this.registerUsuario.value.username,
     };
+    this._firebaseCobit.setuserActive(this.cantidadUsuario);
     this._firebaseCobit
       .agregarUsuario(usernew)
       .then(() => {
-        this.modalSwitch=true;
+        this.router.navigate(['/perfilModal']);
         //desplegar carta de perfil y redirigir a login
       })
       .catch((error) => {
