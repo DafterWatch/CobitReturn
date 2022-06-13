@@ -476,7 +476,7 @@ export class EvaluacionComponent implements OnInit {
           }
         },
         {
-          text: '\n HALLAZGO No. 1',
+          text: '\n HALLAZGO',
           style: 'subheader'
         },
         {
@@ -484,7 +484,7 @@ export class EvaluacionComponent implements OnInit {
           style: 'quote'
         },
         {
-          text: this.hallazgo.value.condicion,
+          text: this.hallazgo.value.condicion + '\n',
         },
         {
           text: 'Criterio: ' ,
@@ -492,7 +492,7 @@ export class EvaluacionComponent implements OnInit {
         },
         ,
         {
-          text: this.hallazgo.value.criterio
+          text: this.hallazgo.value.criterio+ '\n',
         },
         {
           text: 'Causa: ' ,
@@ -500,7 +500,7 @@ export class EvaluacionComponent implements OnInit {
         },
         ,
         {
-          text: this.hallazgo.value.causa
+          text: this.hallazgo.value.causa+ '\n'
         },
         {
           text: 'Efecto: ' ,
@@ -508,13 +508,13 @@ export class EvaluacionComponent implements OnInit {
         },
         ,
         {
-          text: this.hallazgo.value.efecto
+          text: this.hallazgo.value.efecto+ '\n'
         },
         {
           text: '\n V. CONCLUSIONES',
           style: 'subheader'
         },
-        this.hallazgo.value.conclusion,
+        this.hallazgo.value.conclusion+ '\n',
         {
           style: 'tableExample',
           table: {
