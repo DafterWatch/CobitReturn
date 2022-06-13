@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
@@ -12,18 +13,23 @@ export class PerfilModalComponent implements OnInit {
   apellido:string;
   nombre:string;
   contrasena:string;
-  fecha_creacion:Date;
+  fecha_creacion:string;
   usuario:string;
   contrasenaGuardada:boolean=false;
   id_UserActive:any;
   usuarioRegistrado;
 
 
-  constructor(private router:Router,private _firebaseCobit:FirebaseCobitService) {
+  constructor(private fb: FormBuilder, private router:Router,private _firebaseCobit:FirebaseCobitService) {
+    
+    //this.getDatos(_firebaseCobit.getIdUsuario())
    }
-
+   idUser = ""
   ngOnInit(): void {
-    this.obtenerDatos();
+    //this.obtenerDatos()
+    this.idUser = sessionStorage.getItem('idUser')
+    //console.log(this.idUser)
+    this.obtenerDatos()
   }
 
   /*Aqui rescata datos del user*/

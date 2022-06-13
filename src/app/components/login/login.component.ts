@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       ) {
         this.validLogin = true;
         sessionStorage.setItem('id_usuario', this.usuarios[i].usuario);
+        sessionStorage.setItem('usuario', email);
+        sessionStorage.setItem('contrasena', pass);
         this.router.navigate(['/pagprincipal']);
         this._firebaseCobit.ChangeLogin(true);
       } else {
