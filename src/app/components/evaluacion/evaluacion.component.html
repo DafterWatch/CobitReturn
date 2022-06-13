@@ -199,6 +199,39 @@
             </tr>
         </tbody>
     </table>
+    <br>
+    <div class="separador">&nbsp;</div>
+    <br>
+    <form
+    [formGroup]="hallazgo">
+    <div class="input-group">
+       <h2>Hallazgo No.1</h2>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text">Condición</span>
+        <textarea class="form-control" formControlName="condicion" #condicion  aria-label="With textarea"></textarea>
+      </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-text">Criterio</span>
+        <textarea class="form-control" formControlName="criterio" #criterio aria-label="With textarea"></textarea>
+      </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-text">Causa</span>
+        <textarea class="form-control" formControlName="causa" #causa aria-label="With textarea"></textarea>
+      </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-text">Efecto</span>
+        <textarea class="form-control" formControlName="efecto" #efecto aria-label="With textarea"></textarea>
+      </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-text">Conclusión</span>
+        <textarea class="form-control" formControlName="conclusion" #conclusion aria-label="With textarea"></textarea>
+      </div>
+    </form>
     <br />
     <button class="btn btn-lg btn-primary m-2 float-start" routerLink="/procesos" style="background-color: #003ca1">
     Volver Procesos

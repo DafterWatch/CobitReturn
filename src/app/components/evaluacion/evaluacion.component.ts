@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FirebaseCobitService } from 'src/app/services/firebase-cobit.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -11,10 +12,25 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./evaluacion.component.scss'],
 })
 export class EvaluacionComponent implements OnInit {
+  hallazgo: FormGroup;
+  validHallazgo = false;
   constructor(
+    private fb: FormBuilder,
     private _firebaseCobit: FirebaseCobitService,
     private router: Router
-  ) { }
+  ) {
+    this.hallazgo = this.fb.group({
+      criterio: ['', Validators.required],
+      condicion: ['', Validators.required],
+      causa: ['', Validators.required],
+      efecto: ['', Validators.required],
+      conclusion: ['', Validators.required],
+    });
+    this.validHallazgo = true;
+  }
+
+
+
 
   listaDominios: any[] = [];
   listaDominiosString: any[] = [];
@@ -141,7 +157,7 @@ export class EvaluacionComponent implements OnInit {
       this.listaCriteriosOrdenados.sort(this.compare);
     });
   }
-  fieldsChange(event: any, ac: any,pc:any, cat:any) {
+  fieldsChange(event: any, ac: any, pc: any, cat: any) {
     if (event.currentTarget.checked) {
       this.listaCatalizadores.push(ac);
       this.listaProcesosSeleccionados.push(pc);
@@ -158,9 +174,14 @@ export class EvaluacionComponent implements OnInit {
       let formatted_date = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
       return formatted_date;
     }
-    return (formatDate(date)); 
+    return (formatDate(date));
   }
   verificarSeleccion() {
+    if (this.hallazgo.invalid) {
+      console.log('Falta campos');
+      alert('Complete los campos del hallazgo')
+      return;
+    }
     let cadena = '';
     let cant = 0;
     this.listaCatalizadores.forEach((element) => {
@@ -207,6 +228,7 @@ export class EvaluacionComponent implements OnInit {
       criterios: criteriosLista,
       catalizadores: this.listaCatalizadoresString,
     };
+
     this._firebaseCobit
       .agregarEvaluacion(newevaluation)
       .then(() => {
@@ -259,85 +281,84 @@ export class EvaluacionComponent implements OnInit {
     const pdf = pdfMake.createPdf(pdfReporte);
     pdf.open();
   }*/
-  
 
-  obtenerDominios(){
 
-switch (this.listaDominios[0]) {
-    case "PO":
-      this.listaDominiosString[0]="PLANEAR Y ORGANIZAR (PO)";break;
-    case "AI":
-      this.listaDominiosString[0]="ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
-        break;
-    case "DS":
-      this.listaDominiosString[0]="SERVICIOS Y SOPORTE (DS)";
-        break;
-    case "ME":
-      this.listaDominiosString[0]="MONITOREO Y EVALUAR (ME)"
-        break;
-    default:
-        this.listaDominiosString[0]="-"
-        break;
-}
-switch (this.listaDominios[1]) {
-  case "PO":
-    this.listaDominiosString[1]="PLANEAR Y ORGANIZAR (PO)";break;
-  case "AI":
-    this.listaDominiosString[1]="ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
-      break;
-  case "DS":
-    this.listaDominiosString[1]="SERVICIOS Y SOPORTE (DS)";
-      break;
-  case "ME":
-    this.listaDominiosString[1]="MONITOREO Y EVALUAR (ME)"
-      break;
-  default:
-      this.listaDominiosString[1]="-"
-      break;
-}
-switch (this.listaDominios[2]) {
-  case "PO":
-    this.listaDominiosString[2]="PLANEAR Y ORGANIZAR (PO)";break;
-  case "AI":
-    this.listaDominiosString[2]="ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
-      break;
-  case "DS":
-    this.listaDominiosString[2]="SERVICIOS Y SOPORTE (DS)";
-      break;
-  case "ME":
-    this.listaDominiosString[2]="MONITOREO Y EVALUAR (ME)"
-      break;
-  default:
-      this.listaDominiosString[2]="-"
-      break;
-}
-switch (this.listaDominios[3]) {
-  case "PO":
-    this.listaDominiosString[3]="PLANEAR Y ORGANIZAR (PO)";break;
-  case "AI":
-    this.listaDominiosString[3]="ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
-      break;
-  case "DS":
-    this.listaDominiosString[3]="SERVICIOS Y SOPORTE (DS)";
-      break;
-  case "ME":
-    this.listaDominiosString[3]="MONITOREO Y EVALUAR (ME)"
-      break;
-  default:
-      this.listaDominiosString[3]="-"
-      break;
-}
-    
-  }
-  obtenerHallazgos(){
-    //listaProcesosString
-    for (let i = 0; i <= this.listaProcesos.length; i++){
+  obtenerDominios() {
 
+    switch (this.listaDominios[0]) {
+      case "PO":
+        this.listaDominiosString[0] = "PLANEAR Y ORGANIZAR (PO)"; break;
+      case "AI":
+        this.listaDominiosString[0] = "ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
+        break;
+      case "DS":
+        this.listaDominiosString[0] = "SERVICIOS Y SOPORTE (DS)";
+        break;
+      case "ME":
+        this.listaDominiosString[0] = "MONITOREO Y EVALUAR (ME)"
+        break;
+      default:
+        this.listaDominiosString[0] = "-"
+        break;
     }
+    switch (this.listaDominios[1]) {
+      case "PO":
+        this.listaDominiosString[1] = "PLANEAR Y ORGANIZAR (PO)"; break;
+      case "AI":
+        this.listaDominiosString[1] = "ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
+        break;
+      case "DS":
+        this.listaDominiosString[1] = "SERVICIOS Y SOPORTE (DS)";
+        break;
+      case "ME":
+        this.listaDominiosString[1] = "MONITOREO Y EVALUAR (ME)"
+        break;
+      default:
+        this.listaDominiosString[1] = "-"
+        break;
+    }
+    switch (this.listaDominios[2]) {
+      case "PO":
+        this.listaDominiosString[2] = "PLANEAR Y ORGANIZAR (PO)"; break;
+      case "AI":
+        this.listaDominiosString[2] = "ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
+        break;
+      case "DS":
+        this.listaDominiosString[2] = "SERVICIOS Y SOPORTE (DS)";
+        break;
+      case "ME":
+        this.listaDominiosString[2] = "MONITOREO Y EVALUAR (ME)"
+        break;
+      default:
+        this.listaDominiosString[2] = "-"
+        break;
+    }
+    switch (this.listaDominios[3]) {
+      case "PO":
+        this.listaDominiosString[3] = "PLANEAR Y ORGANIZAR (PO)"; break;
+      case "AI":
+        this.listaDominiosString[3] = "ADQUISICIÓN E IMPLEMENTACIÓN (AI)";
+        break;
+      case "DS":
+        this.listaDominiosString[3] = "SERVICIOS Y SOPORTE (DS)";
+        break;
+      case "ME":
+        this.listaDominiosString[3] = "MONITOREO Y EVALUAR (ME)"
+        break;
+      default:
+        this.listaDominiosString[3] = "-"
+        break;
+    }
+
   }
+
 
 
   createPdf() {
+
+
+    console.log(this.hallazgo.value.criterio);
+
     this.obtenerDominios();
     const pdfReporte: any = {
       content: [
@@ -376,11 +397,11 @@ switch (this.listaDominios[3]) {
         '\n Las técnicas y herramientas utilizadas fueron: \n',
         {
           ul: [
-            ' Elaboración de encuestas y checklist de relevamiento de información en base a normativa y servicios contratados entre el area de '+this.idArea +' , Proveedor y el modelo COBIT basado en estándares internacionales.',
+            ' Elaboración de encuestas y checklist de relevamiento de información en base a normativa y servicios contratados entre el area de ' + this.idArea + ' , Proveedor y el modelo COBIT basado en estándares internacionales.',
             'Registro de entrevistas con el responsable.',
-            'Registro de entrevistas con responsables de la area de '+this.idArea +', como auditoría interna, riesgos y seguridad de información con el objetivo de cruzar algunos controles',
+            'Registro de entrevistas con responsables de la area de ' + this.idArea + ', como auditoría interna, riesgos y seguridad de información con el objetivo de cruzar algunos controles',
           ]
-        },  
+        },
         {
           text: '\n II. ASPECTOS RELEVANTES',
           style: 'subheader'
@@ -411,14 +432,14 @@ switch (this.listaDominios[3]) {
           text: '\n CATALIZADORES OBTENIDOS',
           style: 'subheader'
         },
-        
+
         {
           style: 'tableExample',
           table: {
             widths: [200, 200, '*'],
             body: [
               ['Documento', 'Catalizador', 'Proceso'],
-              [this.listaCatalizadores.slice(),  this.listaCatalizadoresHabilidad.slice(), this.listaProcesosSeleccionados.slice()]
+              [this.listaCatalizadores.slice(), this.listaCatalizadoresHabilidad.slice(), this.listaProcesosSeleccionados.slice()]
             ]
           }
         },
@@ -428,7 +449,7 @@ switch (this.listaDominios[3]) {
         },
         {
           text: [
-            {text: '.\n\n'+this.listaRecursos.slice(), italics: true,},
+            { text: '.\n\n' + this.listaRecursos.slice(), italics: true, },
             '.\n\n'
           ]
         },
@@ -442,31 +463,65 @@ switch (this.listaDominios[3]) {
           table: {
             widths: ['*', 160],
             body: [
-              [ 'CRITERIOS' , 'CANTIDAD'],
-              [ 'Efectividad: ' , this.efectividad],
-              ['Eficiencia: ' , this.eficiencia],
-              [ 'Disponibilidad: ' , this.disponibilidad],
-              ['Confidencialidad: ' , this.confidencialidad],
-              [ 'Integridad: ' , this.integridad],
-              ['Cumplimiento: ' , this.cumplimiento],
-              [ 'Confiabilidad: ' , this.confiabilidad],
-          
+              ['CRITERIOS', 'CANTIDAD'],
+              ['Efectividad: ', this.efectividad],
+              ['Eficiencia: ', this.eficiencia],
+              ['Disponibilidad: ', this.disponibilidad],
+              ['Confidencialidad: ', this.confidencialidad],
+              ['Integridad: ', this.integridad],
+              ['Cumplimiento: ', this.cumplimiento],
+              ['Confiabilidad: ', this.confiabilidad],
+
             ]
           }
+        },
+        {
+          text: '\n HALLAZGO No. 1',
+          style: 'subheader'
+        },
+        {
+          text: 'Condición: ' ,
+          style: 'quote'
+        },
+        {
+          text: this.hallazgo.value.condicion,
+        },
+        {
+          text: 'Criterio: ' ,
+          style: 'quote'
+        },
+        ,
+        {
+          text: this.hallazgo.value.criterio
+        },
+        {
+          text: 'Causa: ' ,
+          style: 'quote'
+        },
+        ,
+        {
+          text: this.hallazgo.value.causa
+        },
+        {
+          text: 'Efecto: ' ,
+          style: 'quote'
+        },
+        ,
+        {
+          text: this.hallazgo.value.efecto
         },
         {
           text: '\n V. CONCLUSIONES',
           style: 'subheader'
         },
-        '\n Luego de la evaluación realizada al area de '+ this.idArea+ ' de la empresa CEIBO, se reconoce falencias dentro de el manejo de la informanción sabiendo que se cuenta con varios catalizadores que no se marcaron, asegurando una vulnerabilidad dentro de tal area.',
-        '\n\n\n\n\n',
+        this.hallazgo.value.conclusion,
         {
           style: 'tableExample',
           table: {
             widths: [200, 200, '*'],
             body: [
-              ['Nombre completo' , 'Responsabilidad', 'Firma'],
-              [this.idUsuario.slice(),  'Auditor principal', '']
+              ['Nombre completo', 'Responsabilidad', 'Firma'],
+              [this.idUsuario.slice(), 'Auditor principal', '']
             ]
           },
           layout: {
@@ -489,7 +544,12 @@ switch (this.listaDominios[3]) {
         },
         tableExample: {
           margin: [0, 5, 0, 15]
-        }
+        },
+        quote: {
+          italics: true,
+          bold: true,
+          fontSize: 15,
+        },
       }
 
     }
