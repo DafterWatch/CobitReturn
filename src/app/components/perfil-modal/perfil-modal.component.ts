@@ -34,29 +34,11 @@ export class PerfilModalComponent implements OnInit {
 
   /*Aqui rescata datos del user*/
   obtenerDatos(){
-  
-    this.id_UserActive=this._firebaseCobit.getuserActive();
-alert("entra al metodo")
-    if(this.id_UserActive !== null){
-      alert("entra al if")
-      this._firebaseCobit.getUserId(this.id_UserActive).subscribe(data => {
-        alert("entra al cobitservice")
-        this.usuarioRegistrado.setValue({
-          name: data.payload.data()['name'],
-          apellido: data.payload.data()['apellido'],
-          usuario: data.payload.data()['usuario'],
-          contrasena: data.payload.data()['contrasena'],
-          fecha_creacion: data.payload.data()['fecha_creacion'],
-        })
-        
-      })
-      alert("entra al asignacion")
-      this.nombre=this.usuarioRegistrado.name;
-        this.apellido=this.usuarioRegistrado.apellido;
-        this.usuario=this.usuarioRegistrado.usuario;
-        this.contrasena=this.usuarioRegistrado.contrasena;
-        this.fecha_creacion=this.usuarioRegistrado.fecha_creacion;
-    }
+    this.nombre= sessionStorage.getItem('nombre')
+    this.apellido=sessionStorage.getItem('apellido')
+    this.contrasena=sessionStorage.getItem('contrasena')
+    this.fecha_creacion=sessionStorage.getItem('fecha')
+    this.usuario=sessionStorage.getItem('usuario')
   }
 
 

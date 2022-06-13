@@ -5,13 +5,13 @@
   <div class="card">
     <h5 class="card-header">Datos - {{nombre}} {{apellido}}</h5>
     <div class="card-body">
-      <h5 class="card-title padre">Usuario: {{usuario}}</h5>
+      <h5 class="card-title padre">Usuario: <h3 style="color: rgb(243, 144, 52);">{{usuario}}</h3></h5>
       <h5 class="card-title padre ">
-        Contraseña: {{contrasena}} </h5>
+        Contraseña: <h3 style="color: rgb(243, 144, 52);"> {{contrasena}}</h3></h5>
       <div class="form-check padre">
         <input class="form-check-input" type="checkbox" value="{{contrasenaGuardada}}" (change)="cambiarCheck(contrasenaGuardada)" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
-          Copie mi contraseña
+          Copie mi contraseña y mi nombre de usuario
         </label>
 
       </div>
@@ -20,7 +20,6 @@
       <p class="card-text"><b>Nota:</b> La contraseña es generada automaticamente,<b> debe copiada para su primer inicio de sesión</b>, puede ser actualizada en las opciones
         de PERFIL.</p>
       <br>
-      <a class="btn btn-primary padre" (click)="obtenerDatos()">ObtenerDatos</a>
       <a class="btn btn-primary padre" (click)="VerificarSeguridad()">Continuar a iniciar sesión</a>
     </div>
   </div> 

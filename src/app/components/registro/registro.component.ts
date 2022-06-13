@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
   usuarios: any[] = [];
-  modalSwitch:boolean = false;
+  modalSwitch: boolean = false;
   abecedario = [
     'a',
     'b',
@@ -67,19 +67,18 @@ export class RegistroComponent implements OnInit {
   ) {
     this.registerUsuario = this.fb.group({
       name: ['', Validators.required],
-      lastname: ['', Validators.required],
-      username: ['', Validators.required],
+      lastname: ['', Validators.required]
     });
     this.validRegister = true;
   }
   ngOnInit(): void {
     this.getUsuario();
   }
-  crearUser(name: string, lastname: string, username: string) {
+  crearUser(name: string, lastname: string) {
     this.submitted = true;
     if (this.registerUsuario.invalid) {
       console.log('Falta campos');
-      this.validRegister=false;
+      this.validRegister = false;
       return;
     }
     console.log('Campos llenos');
@@ -89,14 +88,14 @@ export class RegistroComponent implements OnInit {
       fecha_creacion: new Date(),
       id_usuario: this.cantidadUsuario,
       nombre: this.registerUsuario.value.name,
-      usuario: this.registerUsuario.value.username,
+      usuario: this.generarUserName(),
     };
     //alert(usernew.id_usuario)
-    sessionStorage.setItem('nombre',this.registerUsuario.value.name,)
+    sessionStorage.setItem('nombre', this.registerUsuario.value.name,)
     sessionStorage.setItem('apellido', this.registerUsuario.value.lastname)
-    sessionStorage.setItem('contrasena', this.generarContrasena())
+    sessionStorage.setItem('contrasena', usernew.contrasena)
     sessionStorage.setItem('fecha', new Date().toDateString())
-    sessionStorage.setItem('usuario', this.registerUsuario.value.username)
+    sessionStorage.setItem('usuario', usernew.usuario)
     this._firebaseCobit
       .agregarUsuario(usernew)
       .then(() => {
@@ -108,6 +107,22 @@ export class RegistroComponent implements OnInit {
       });
   }
 
+  generarUserName() {
+    let a = 3;
+    let nameA, lastnameA, username;
+    nameA = this.registerUsuario.value.name;
+    lastnameA = this.registerUsuario.value.lastname;
+
+
+    username = nameA.substring(0, a);
+    username += lastnameA.substring(0, a);
+    username+='_'
+    for (var i = 0; i < 3; i++) {
+      username += this.getRandomInt(9);
+    }
+    
+    return username;
+  }
   generarContrasena() {
     this.contrasena = '';
     for (var i = 0; i < 5; i++) {
@@ -136,9 +151,12 @@ export class RegistroComponent implements OnInit {
           id: element.payload.doc.id,
           ...element.payload.doc.data(),
         });
+
       });
+
     });
     this.cantidadUsuario = parseInt(sessionStorage.getItem('cantUsuarios'));
     this.cantidadUsuario++;
   }
+
 }

@@ -8,7 +8,7 @@
         <br />
 
         <div class="hijo_uno color" *ngIf="modalSwitch == false">
-            <form [formGroup]="registerUsuario" (ngSubmit)="crearUser(name.value, lastname.value, username.value)">
+            <form [formGroup]="registerUsuario" (ngSubmit)="crearUser(name.value, lastname.value)">
                 <!-- Email input -->
                 <span *ngIf="!validRegister" class="badge bg-danger"
         >Debe llenar todos los campos</span
@@ -21,11 +21,6 @@
                 <div class="form-outline mb-3">
                     <label class="form-label" for="form3Example4">Apellido</label>
                     <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ingrese su apellido" formControlName="lastname" #lastname />
-                </div>
-
-                <div class="form-outline mb-3">
-                    <label class="form-label" for="form3Example4">Usuario</label>
-                    <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ingrese un nombre de usuario" formControlName="username" #username />
                 </div>
                 <!--<div class="d-flex justify-content-between align-items-center">
                 <a href="#!" class="text-body" routerLink="/olvidocontra">¿Olvido su contraseña?</a>
